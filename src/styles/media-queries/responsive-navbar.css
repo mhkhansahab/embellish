@@ -1,0 +1,19 @@
+@media screen and (min-width: 768px) {
+    .menu-container, .search-container{
+        display: none;
+    }
+    .left-nav > *, .right-nav > *{
+        cursor: pointer;
+        margin-left: 15px;
+    }
+    .left-nav, .right-nav{
+        display: flex;
+        width: 300px;
+    }
+}
+
+@media screen and (min-width: 968px) {
+    .left-nav, .right-nav{
+        width: 400px;
+    }
+}
