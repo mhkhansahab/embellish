@@ -1,7 +1,7 @@
 import './App.css';
-import Navbar from "./components/navbar";
-import ContentContainer from "./components/contentContainer";
-import NavMenu from "./components/navMenu";
+import Navbar from "./components/desktopNav/navbar";
+import ContentContainer from "./components/contentContainer/contentContainer";
+import NavMenu from "./components/mobileNav/navMenu";
 import { useState } from "react";
 
 function App() {

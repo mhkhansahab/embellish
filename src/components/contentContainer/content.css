@@ -1,0 +1,39 @@
+.landing-card-container{
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+.product-cards{
+  background-color: #f7f7f7;
+  padding: 20px 10px;
+}
+.more-btn{
+  position: relative;
+  cursor: pointer;
+  background-color: white;
+  border: 3px solid red;
+  color: red;
+  width: fit-content;
+  font-size: 20px;
+  border-radius: 50px;
+  padding: 4px 40px;
+  margin: 20px auto;
+  overflow: hidden;
+}
+.transition-div{
+  top: 0;
+  bottom: 0;
+  height: 80%;
+  width: 90%;
+  left: -299px;
+  right: 0;
+  margin: auto;
+  border-radius: 50px;
+  position: absolute;
+  background-color: red;
+  color: white;
+  transition: all .4s ease;
+}
+
+.more-btn:hover .transition-div{
+  left: 0;
+}

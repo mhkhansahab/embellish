@@ -5,7 +5,17 @@
 
 .App {
   text-align: center;
+  margin-bottom: 100px;
 }
 *{
   font-family: Monteserrat-Medium;
+}
+.flex{
+  display: flex;
+}
+.center-1{
+  justify-content: center;
+}
+.center-2{
+  align-items: center;
 }

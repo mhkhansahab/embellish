@@ -1,0 +1,12 @@
+.divider{
+    border: 0.5px solid lightgrey;
+    width: 100%;
+}
+.myTitles{
+    text-transform: uppercase;
+    color: grey;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    margin: 20px;
+}

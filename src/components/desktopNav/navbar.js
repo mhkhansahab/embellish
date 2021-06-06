@@ -1,7 +1,7 @@
-import Logo from "./../assets/embellish-logo.jpeg";
-import NavLink from "./../atoms/navlink";
-import "./../styles/navbar.css";
-import "./../styles/media-queries/responsive-navbar.css";
+import Logo from "./../../assets/embellish-logo.jpeg";
+import NavLink from "./../../atoms/navlink/navlink";
+import "./navbar.css";
+import "./../../styles/media-queries/responsive-navbar.css";
 
 
 function navbar(props){

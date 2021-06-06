@@ -1,4 +1,4 @@
-import "./../styles/navlink.css";
+import "./navlink.css";
 
 function navlink (props){
     return(

@@ -1,0 +1,39 @@
+.product-card-container{
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    height: 300px;
+    width: 100%;
+    max-width: 280px;
+    margin: 5px;
+}
+.product-text-container{
+    color: white;
+    background-color: rgb(128, 128, 128, 0.4);
+}
+.product-card-text, .card-btn{
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+}
+.card-btn{
+    font-size: 10px;
+    bottom: 10%;
+    background-color: red;
+    color: white;
+    border: 2px solid white;
+    border-radius: 50px;
+    width: fit-content;
+    padding: 5px 20px;
+    transition: all .4s ease;
+}
+.product-card-text{
+    bottom: 25%;
+}
+
+.card-btn:hover{
+    background-color: white;
+    border-color: red;
+    color: black;
+}
