@@ -14,7 +14,7 @@ function contentContainer() {
       <Carousel></Carousel>
       <Container>
         <Divider title="Categories"></Divider>
-        <div className="landing-card-container flex">
+        <div className="landing-card-container flex product-cards">
           <Card title="Hand Embroidery" image={img1}></Card>
           <Card title="Cotton Wear" image={img2}></Card>
           <Card title="Stylish Kurtis" image={img3}></Card>

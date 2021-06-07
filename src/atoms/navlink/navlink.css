@@ -1,9 +1,10 @@
 .navlink-container{
+    color: black;
     display: flex;
     flex-direction: column;
 }
 .border{
-    background-color: #f25c8a;
+    background-color: black;
     padding-top: 6px;
     visibility: hidden;
     width: 0%;

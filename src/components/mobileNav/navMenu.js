@@ -6,8 +6,6 @@ const navMenu = (props)=>{
         <div className="nav-menu">
             <ul className="flex">
                 <li className = "menu-items">Home</li>
-                <li className = "menu-items">Browse Products</li>
-                <li className = "menu-items">Find a Store</li>
                 <li className = "menu-items">About Us</li>
                 <li className = "menu-items">Contact Us</li>
             </ul>

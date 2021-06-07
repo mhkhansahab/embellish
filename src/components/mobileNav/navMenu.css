@@ -3,7 +3,7 @@
     top: 0;
     width: 100%;
     z-index: 999;
-    background-color: #f25c8a;
+    background-color: black;
     color: white;
     animation: forwards .6s opacity-changer;
 }
@@ -27,7 +27,7 @@
 }
 .menu-items:hover{
     background-color: white;
-    color: #f25c8a;
+    color: black;
 }
 
 .cancel-container{

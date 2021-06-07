@@ -1,14 +1,8 @@
-@font-face {
-  font-family: Monteserrat-Medium;
-  src: url("./fonts/Montserrat-Medium.ttf");
-}
-
 .App {
   text-align: center;
-  margin-bottom: 100px;
 }
 *{
-  font-family: Monteserrat-Medium;
+  font-family: 'Montserrat';
 }
 .flex{
   display: flex;
@@ -18,4 +12,13 @@
 }
 .center-2{
   align-items: center;
+}
+.curreny-selector{
+  position: fixed;
+  bottom: 0;
+  left: 30px;
+}
+.curreny-selector:active{
+  outline: none;
+  border: none;
 }

@@ -1,19 +1,26 @@
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 800px) {
     .menu-container, .search-container{
         display: none;
     }
-    .left-nav > *, .right-nav > *{
+    .right-nav > *{
         cursor: pointer;
-        margin-left: 15px;
+        margin-left: 10px;
+        margin-right: 10px;
     }
-    .left-nav, .right-nav{
+    .right-nav{
         display: flex;
-        width: 300px;
+    }
+    .logo-container{
+        margin: 0;
     }
 }
 
 @media screen and (min-width: 968px) {
-    .left-nav, .right-nav{
-        width: 400px;
+    .logo-container > img{
+        width: 300px;
+    }
+    .right-nav > *{
+        margin-left: 20px;
+        margin-right: 20px;
     }
 }
