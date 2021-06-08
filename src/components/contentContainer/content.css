@@ -37,3 +37,13 @@
 .more-btn:hover .transition-div{
   left: 0;
 }
+
+@media screen and (min-width:578px) {
+  .home-carousel{
+    display: flex;
+    justify-content: center;
+  }
+  .home-carousel .carousel{
+   width: 80%;
+  }  
+}

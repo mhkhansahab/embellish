@@ -1,0 +1,21 @@
+.title{
+    font-size: 30px;
+    font-weight: 800;
+    letter-spacing: .1em;
+}
+.sizes{
+    margin-top: 40px;
+}
+
+.price{
+    margin-top: 40px;
+    font-size: 15px;
+    color: grey;
+}
+.add-btn{
+    margin: 50px auto;
+    background-color: black;
+    color: white;
+    width: fit-content;
+    padding: 7px 35px;
+}

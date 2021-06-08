@@ -1,0 +1,35 @@
+.product-page-container{
+    padding: 40px;
+    width: 100%;
+    flex-wrap: wrap;
+}
+.carousel-container{
+    overflow: hidden;
+    margin: 20px;
+    width: 50%;
+    min-width: 450px;
+    box-shadow: 10px 10px 75px 2px rgba(0,0,0,0.45);
+    -webkit-box-shadow: 10px 10px 75px 2px rgba(0,0,0,0.45);
+    -moz-box-shadow: 10px 10px 75px 2px rgba(0,0,0,0.45);
+}
+
+.product-container{
+    margin: 20px;
+    width: 40%;
+    font-family: Montserrat;
+    font-weight: 600;
+}
+
+@media screen and (max-width: 928px) {
+    .carousel-container{
+        width: 90%;
+        margin: 5px;
+        min-width: 280px;
+    }
+    .product-container{
+        width: 70%;
+    }
+    .product-page-container{
+        justify-content: center;
+    }    
+}

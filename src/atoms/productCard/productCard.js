@@ -11,7 +11,7 @@ const productCard = (props) => {
           <div className="card-text">{props.title}</div>
           <div className="card-text">Rs.3000</div>
         </div>
-        <div className="product-card-btn">Add to Cart</div>
+        <div className="product-card-btn">+</div>
       </div>
     </div>
   );

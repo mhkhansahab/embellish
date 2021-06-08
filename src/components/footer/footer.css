@@ -5,6 +5,7 @@
     height: 300px;
     justify-content: space-evenly;
     flex-wrap: wrap;
+    padding-bottom: 20px;
 }
 .join-btn{
     cursor: pointer;
@@ -42,8 +43,9 @@
 }
 .icon-container{
     position: absolute;
-    bottom: 20px;
-    right: 40px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
     display: flex;
     justify-content: center;
     align-items: center;
