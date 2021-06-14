@@ -5,7 +5,7 @@
     height: 300px;
     justify-content: space-evenly;
     flex-wrap: wrap;
-    padding-bottom: 20px;
+    padding: 20px 0;
 }
 .join-btn{
     cursor: pointer;
@@ -40,6 +40,7 @@
     position: relative;
     background-color: black;
     height: 50px;
+    padding-bottom: 60px;
 }
 .icon-container{
     position: absolute;

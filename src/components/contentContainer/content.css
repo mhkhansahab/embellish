@@ -1,10 +1,5 @@
-.landing-card-container{
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-}
 .product-cards{
-  background-color: #f7f7f7;
-  padding: 20px 10px;
+  margin: 0 auto;
 }
 .more-btn{
   position: relative;
@@ -16,7 +11,7 @@
   font-size: 20px;
   border-radius: 50px;
   padding: 4px 40px;
-  margin: 20px auto;
+  margin: 40px auto;
   overflow: hidden;
 }
 .transition-div{
@@ -36,14 +31,4 @@
 
 .more-btn:hover .transition-div{
   left: 0;
-}
-
-@media screen and (min-width:578px) {
-  .home-carousel{
-    display: flex;
-    justify-content: center;
-  }
-  .home-carousel .carousel{
-   width: 80%;
-  }  
 }

@@ -1,7 +1,9 @@
 import Carousel from "react-bootstrap/Carousel";
+import "./carousel.css";
 
 const carousel = (props) => {
   return (
+    <div className="carousel-container-2">
     <Carousel fade>
       <Carousel.Item>
         <img
@@ -25,6 +27,7 @@ const carousel = (props) => {
         />
       </Carousel.Item>
     </Carousel>
+    </div>
   );
 };
 

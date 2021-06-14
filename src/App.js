@@ -7,6 +7,8 @@ import { useState, useEffect } from "react";
 import Modal from "./components/countryModal/modal";
 import ProductPage from "./components/productPage/productPage";
 import {BrowserRouter as Router , Switch, Route } from "react-router-dom";
+import Cart from "./components/cart/cart";
+import CartPage from "./components/cartPage/cartPage";
 
 function App() {
   const [navStatus, setnavStatus] = useState({ status: false });
@@ -36,19 +38,27 @@ function App() {
     <div className="App">
       <Navbar clicked={changeStatus}></Navbar>
       {navStatus.status ? <NavMenu clicked={changeStatus}></NavMenu> : null}
+      {/* <CartPage></CartPage> */}
       <Switch>
       <Route path="/product"><ProductPage></ProductPage></Route>
       <Route path="/"><ContentContainer></ContentContainer></Route>
       </Switch>
+      
       <Footer></Footer>
-      <select className="curreny-selector">
+      {/* <select className="curreny-selector">
         <option value="pakistan">PKR</option>
         <option value="india">INR</option>
         <option value="uae">AED</option>
-      </select>
+      </select> */}
+
+    
+      {/* <Cart></Cart> */}
+
+
       {/* {
         modal.status ? <Modal countrySelector = {countrySelector}></Modal> : null
       } */}
+
     </div>
     </Router>
   );

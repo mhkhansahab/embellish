@@ -1,0 +1,10 @@
+.cart-page-container{
+    height: 50vh;
+    width: 100%;
+}
+.cart-page-header{
+    background-color: #F9F9F9;
+    height: 120px;
+    font-size: 20px;
+    font-weight: 600;
+}

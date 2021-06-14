@@ -1,59 +1,76 @@
-import { Container } from "react-bootstrap";
 import Carousel from "./../UI/carousel";
 import Divider from "./../../atoms/divider/divider";
-import "./content.css";
 import Card from "./../../atoms/card/card";
 import ProductCard from "./../../atoms/productCard/productCard";
-import img1 from "./../../assets/card-img-1.jpg";
-import img2 from "./../../assets/card-img-3.jpg";
-import img3 from "./../../assets/card-img-4.jpg";
+import "./content.css";
+import img1 from "./../../assets/categories/poshak.jpg";
+import img2 from "./../../assets/categories/indo-western2.jpg";
+import img3 from "./../../assets/categories/traditional.jpg";
+import img4 from "./../../assets/categories/indo-western.jpg";
+import img5 from "./../../assets/categories/jewellary.jpg";
+import img6 from "./../../assets/categories/beauty.jpg";
+import img7 from "./../../assets/categories/shoes.jpg";
+import bannerOne from "./../../assets/banners/banner4.jpg";
+import bannerTwo from "./../../assets/banners/banner2.jpg";
+import bannerThree from "./../../assets/banners/banner3.jpg";
+import card1 from "./../../assets/product/products/navy-purse.jpg";
+import card2 from "./../../assets/product/products/chains.jpg";
+import card3 from "./../../assets/product/products/grey-elegance.jpg";
+import card4 from "./../../assets/product/products/earrings.jpg";
+import card5 from "./../../assets/product/products/crystal-glass.jpg";
+import card6 from "./../../assets/product/products/sandal.jpg";
+
 
 function contentContainer() {
   return (
     <div>
-      <div className="home-carousel">
       <Carousel
-      firstImage = "https://wardrobeessentials.shop/slider3.jpg"
-      secondImage = "https://wardrobeessentials.shop/slider3.jpg"
-      thirdImage = "https://wardrobeessentials.shop/slider3.jpg"
+        firstImage={bannerOne}
+        secondImage={bannerTwo}
+        thirdImage={bannerThree}
       ></Carousel>
-      </div>
-      <Container>
+      
         <Divider title="Categories"></Divider>
-        <div className="landing-card-container flex product-cards">
-          <Card title="Hand Embroidery" image={img1}></Card>
-          <Card title="Cotton Wear" image={img2}></Card>
-          <Card title="Stylish Kurtis" image={img3}></Card>
+        <div className="product-cards">
+          <Card title="Lucknowi Poshak" image={img1}></Card>
+          <Card title="Indo-Westernn" image={img2}></Card>
+          <Card title="Traditional-Wears" image={img3}></Card>
+          <Card title="Formals" image={img4}></Card>
+          <Card title="Beauty" image={img5}></Card>
+          <Card title="Accessories" image={img6}></Card>
+          <Card title="Shoes" image={img7}></Card>
         </div>
-        <Divider title="New Arrival"></Divider>
-        <div className="landing-card-container flex product-cards">
-          <ProductCard
-            url="https://scontent.fkhi17-1.fna.fbcdn.net/v/t1.6435-9/172999486_120933150091787_9017708873618743525_n.jpg?_nc_cat=104&ccb=1-3&_nc_sid=8bfeb9&_nc_eui2=AeHkRn6wu2CwPHrV9irmz3WDoTRi7rpAdg-hNGLuukB2D1zsBnV14gJenprulek1JCaoro6fGeA8ZpCBFB40CMzW&_nc_ohc=lV3Np_2u7HUAX_hwvvI&_nc_ht=scontent.fkhi17-1.fna&oh=71996ab531356c17fb61d5d45c074478&oe=60E28130"
-            title="Poshak"
-          ></ProductCard>
-          <ProductCard
-            url="https://scontent.fkhi17-1.fna.fbcdn.net/v/t1.6435-9/172999486_120933150091787_9017708873618743525_n.jpg?_nc_cat=104&ccb=1-3&_nc_sid=8bfeb9&_nc_eui2=AeHkRn6wu2CwPHrV9irmz3WDoTRi7rpAdg-hNGLuukB2D1zsBnV14gJenprulek1JCaoro6fGeA8ZpCBFB40CMzW&_nc_ohc=lV3Np_2u7HUAX_hwvvI&_nc_ht=scontent.fkhi17-1.fna&oh=71996ab531356c17fb61d5d45c074478&oe=60E28130"
-            title="Poshak"
-          ></ProductCard>
-          <ProductCard
-            url="https://scontent.fkhi17-1.fna.fbcdn.net/v/t1.6435-9/172999486_120933150091787_9017708873618743525_n.jpg?_nc_cat=104&ccb=1-3&_nc_sid=8bfeb9&_nc_eui2=AeHkRn6wu2CwPHrV9irmz3WDoTRi7rpAdg-hNGLuukB2D1zsBnV14gJenprulek1JCaoro6fGeA8ZpCBFB40CMzW&_nc_ohc=lV3Np_2u7HUAX_hwvvI&_nc_ht=scontent.fkhi17-1.fna&oh=71996ab531356c17fb61d5d45c074478&oe=60E28130"
-            title="Poshak"
-          ></ProductCard>
-          <ProductCard
-            url="https://scontent.fkhi17-1.fna.fbcdn.net/v/t1.6435-9/172999486_120933150091787_9017708873618743525_n.jpg?_nc_cat=104&ccb=1-3&_nc_sid=8bfeb9&_nc_eui2=AeHkRn6wu2CwPHrV9irmz3WDoTRi7rpAdg-hNGLuukB2D1zsBnV14gJenprulek1JCaoro6fGeA8ZpCBFB40CMzW&_nc_ohc=lV3Np_2u7HUAX_hwvvI&_nc_ht=scontent.fkhi17-1.fna&oh=71996ab531356c17fb61d5d45c074478&oe=60E28130"
-            title="Poshak"
-          ></ProductCard>
-          <ProductCard
-            url="https://scontent.fkhi17-1.fna.fbcdn.net/v/t1.6435-9/172999486_120933150091787_9017708873618743525_n.jpg?_nc_cat=104&ccb=1-3&_nc_sid=8bfeb9&_nc_eui2=AeHkRn6wu2CwPHrV9irmz3WDoTRi7rpAdg-hNGLuukB2D1zsBnV14gJenprulek1JCaoro6fGeA8ZpCBFB40CMzW&_nc_ohc=lV3Np_2u7HUAX_hwvvI&_nc_ht=scontent.fkhi17-1.fna&oh=71996ab531356c17fb61d5d45c074478&oe=60E28130"
-            title="Poshak"
-          ></ProductCard>
-          <ProductCard
-            url="https://scontent.fkhi17-1.fna.fbcdn.net/v/t1.6435-9/172999486_120933150091787_9017708873618743525_n.jpg?_nc_cat=104&ccb=1-3&_nc_sid=8bfeb9&_nc_eui2=AeHkRn6wu2CwPHrV9irmz3WDoTRi7rpAdg-hNGLuukB2D1zsBnV14gJenprulek1JCaoro6fGeA8ZpCBFB40CMzW&_nc_ohc=lV3Np_2u7HUAX_hwvvI&_nc_ht=scontent.fkhi17-1.fna&oh=71996ab531356c17fb61d5d45c074478&oe=60E28130"
-            title="Poshak"
-          ></ProductCard>
-        </div>
-        <div className="more-btn">More<div className="transition-div ">More</div></div>
-      </Container>
+  
+      <Divider title="New Arrival"></Divider>
+      <div className="product-cards">
+        <ProductCard
+          url={card1}
+          title="Poshak"
+        ></ProductCard>
+        <ProductCard
+          url={card2}
+          title="Poshak"
+        ></ProductCard>
+        <ProductCard
+          url= {card3}
+           title="Poshak"
+        ></ProductCard>
+        <ProductCard
+          url={card4}
+          title="Poshak"
+        ></ProductCard>
+        <ProductCard
+          url={card5}
+          title="Poshak"
+        ></ProductCard>
+        <ProductCard
+          url={card6}
+          title="Poshak"
+        ></ProductCard>
+      </div>
+      <div className="more-btn">
+        More<div className="transition-div ">More</div>
+      </div>
     </div>
   );
 }

@@ -8,9 +8,9 @@
     margin: 20px;
     width: 50%;
     min-width: 450px;
-    box-shadow: 10px 10px 75px 2px rgba(0,0,0,0.45);
-    -webkit-box-shadow: 10px 10px 75px 2px rgba(0,0,0,0.45);
-    -moz-box-shadow: 10px 10px 75px 2px rgba(0,0,0,0.45);
+    box-shadow: 10px 10px 75px 2px rgba(0,0,0,0.25);
+    -webkit-box-shadow: 10px 10px 75px 2px rgba(0,0,0,0.25);
+    -moz-box-shadow: 10px 10px 75px 2px rgba(0,0,0,0.25);
 }
 
 .product-container{
@@ -18,6 +18,26 @@
     width: 40%;
     font-family: Montserrat;
     font-weight: 600;
+}
+
+.product-description{
+    width: 100%;
+    margin: 20px auto;
+    font-size: 24px;
+}
+.empty-container{
+    height: 0px;
+    width: 100%;
+}
+.products-card-container{
+    width: 100%;
+    margin-top: 20px;
+}
+
+@media screen and (min-width: 768px) {
+    .empty-container{
+        height: 70px;
+    }
 }
 
 @media screen and (max-width: 928px) {
