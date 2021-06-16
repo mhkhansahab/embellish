@@ -1,4 +1,4 @@
-import Logo from "./../../assets/embellish-logo-2.png";
+import Logo from "./../../assets/logo-black.png";
 import NavLink from "./../../atoms/navlink/navlink";
 import "./navbar.css";
 import "./../../styles/media-queries/responsive-navbar.css";

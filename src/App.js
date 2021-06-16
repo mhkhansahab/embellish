@@ -39,11 +39,11 @@ function App() {
       <Navbar clicked={changeStatus}></Navbar>
       {navStatus.status ? <NavMenu clicked={changeStatus}></NavMenu> : null}
    
-      <CartPage></CartPage>
-      {/* <Switch>
+      {/* <CartPage></CartPage> */}
+      <Switch>
       <Route path="/product"><ProductPage></ProductPage></Route>
       <Route path="/"><ContentContainer></ContentContainer></Route>
-      </Switch> */}
+      </Switch>
       
       <Footer></Footer>
       {/* <select className="curreny-selector">
