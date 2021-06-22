@@ -45,3 +45,15 @@
 .cart-page-tile-btns> *{
     margin: 10px 0;
 }
+
+@media screen and (min-width : 512px) {
+    .tile-container{
+        font-size: 18px;
+    }
+    .cart-page-tile{
+        width: 75%;
+    }
+    .cart-page-tile-btns{
+        width: 25%;
+    }
+}

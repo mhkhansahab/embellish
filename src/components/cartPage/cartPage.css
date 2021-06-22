@@ -1,9 +1,17 @@
 .cart-page-container{
     width: 100%;
+    margin-bottom: 80px;
 }
 .cart-page-header{
     background-color: #F9F9F9;
     height: 120px;
     font-size: 20px;
     font-weight: 600;
+    margin-bottom: 20px;
+}
+.checkout-btn{
+    margin-top: 60px;
+}
+.checkout-transition-div{
+    left: -699px;
 }

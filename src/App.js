@@ -4,23 +4,22 @@ import ContentContainer from "./components/contentContainer/contentContainer";
 import NavMenu from "./components/mobileNav/navMenu";
 import Footer from "./components/footer/footer";
 import { useState, useEffect } from "react";
-import Modal from "./components/countryModal/modal";
+//import Modal from "./components/countryModal/modal";
 import ProductPage from "./components/productPage/productPage";
 import {BrowserRouter as Router , Switch, Route } from "react-router-dom";
-import Cart from "./components/cart/cart";
 import CartPage from "./components/cartPage/cartPage";
 
 function App() {
   const [navStatus, setnavStatus] = useState({ status: false });
-  const [country, setcountry] = useState({country:null})
-  const [modal, setmodal] = useState({status : false})
+  //const [country, setcountry] = useState({country:null})
+  //const [modal, setmodal] = useState({status : false})
   
-  useEffect(() => {
-    const country = window.localStorage.getItem("country");
-    if(!country){
-      setmodal({status:true})
-    }
-  }, [])
+  // useEffect(() => {
+  //   const country = window.localStorage.getItem("country");
+  //   if(!country){
+  //     setmodal({status:true})
+  //   }
+  // }, [])
 
 
   const changeStatus = () => {
@@ -29,9 +28,9 @@ function App() {
     });
   };
 
-  const countrySelector = ()=>{
-    setmodal({status : false})
-  }
+  // const countrySelector = ()=>{
+  //   setmodal({status : false})
+  // }
 
   return (
     <Router>
@@ -39,9 +38,9 @@ function App() {
       <Navbar clicked={changeStatus}></Navbar>
       {navStatus.status ? <NavMenu clicked={changeStatus}></NavMenu> : null}
    
-      {/* <CartPage></CartPage> */}
       <Switch>
       <Route path="/product"><ProductPage></ProductPage></Route>
+      <Route path="/cart"><CartPage></CartPage></Route>
       <Route path="/"><ContentContainer></ContentContainer></Route>
       </Switch>
       
@@ -51,9 +50,6 @@ function App() {
         <option value="india">INR</option>
         <option value="uae">AED</option>
       </select> */}
-
-    
-    {/* <Cart></Cart> */}
 
 
       {/* {
