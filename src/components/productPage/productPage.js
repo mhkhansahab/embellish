@@ -7,7 +7,7 @@ import Divider from "./../../atoms/divider/divider";
 import card1 from "./../../assets/product/img1.jpg";
 import image1 from "./../../assets/tile-images/1.jpg";
 import image2 from "./../../assets/tile-images/2.jpg";
-
+import ReviewCard from "../../atoms/reviewCard/reviewCard";
 
 function productPage() {
   return (
@@ -37,6 +37,13 @@ function productPage() {
         of Lorem Ipsum
       </div>
     </div>
+
+    {/* <Divider title="Reviews"></Divider>
+    <div className="review-card-container">
+      <ReviewCard></ReviewCard>
+      <ReviewCard></ReviewCard>
+      <ReviewCard></ReviewCard>
+    </div> */}
 
     <Divider title="Similar Products"></Divider>
       <div className="products-card-container">

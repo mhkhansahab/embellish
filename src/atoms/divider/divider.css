@@ -32,9 +32,12 @@
 }
 
 @media screen and (min-width : 768px) {
+    .divider-container{
+        margin-bottom: 30px;
+    }
     .myTitles{
-        font-size: xxx-large;
-        margin-top: 19px;
+        font-size: 36px;
+        margin-top: 30px;
     }
     .divider{
         margin-top: 60px;

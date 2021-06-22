@@ -1,13 +1,15 @@
 import React from "react";
 import "./cartPage.css";
 import CartPageTile from "../../atoms/cartPageTile/cartPageTile";
+import Divider from "../../atoms/divider/divider";
 
 function cartPage() {
   return (
     <div className="cart-page-container">
-      <div className="cart-page-header flex center-1 center-2">
+      {/* <div className="cart-page-header flex center-1 center-2">
         Shopping Cart
-      </div>
+      </div> */}
+      <Divider title = "Shopping Cart"></Divider>
       <CartPageTile></CartPageTile>
       <CartPageTile></CartPageTile>
       <CartPageTile></CartPageTile>

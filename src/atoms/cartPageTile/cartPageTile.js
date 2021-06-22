@@ -16,10 +16,12 @@ function cartPageTile() {
             Type: <b>Slim Fit</b>
           </div>
           <div>
-            Size: <b>S</b>
+            Size: <b>Small</b>
+          </div>
+          <div>
+            Color: <b>Pink</b>
           </div>
           <div className="tile-icon-container">
-            <i class="far fa-edit"></i>
             <i class="far fa-trash-alt"></i>
           </div>
         </div>
