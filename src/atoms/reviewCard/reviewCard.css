@@ -1,0 +1,31 @@
+.review-card{
+    margin: 5px 10px;
+    border : 1px solid lightgray;
+    width: fit-content;
+    padding: 10px 20px;
+    width: 400px;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+.review{
+    font-style: italic;
+    color :black;
+    text-align: left;
+    max-width: 90%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+.review-by{
+    color: rgb(0,0,0,0.6);
+    font-weight: 500;
+    text-align: left;
+}
+
+::-webkit-scrollbar {
+    height: 10px;                       
+  }
+  ::-webkit-scrollbar-thumb:horizontal{
+      background-color: black;
+  }

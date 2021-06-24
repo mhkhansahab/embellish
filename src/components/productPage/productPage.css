@@ -32,6 +32,13 @@
     width: 100%;
     margin-top: 20px;
 }
+.review-card-container{
+    margin: 0 auto;
+    max-width: 80%;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
 
 @media screen and (min-width: 768px) {
     .empty-container{

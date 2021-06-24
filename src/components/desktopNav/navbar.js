@@ -13,7 +13,20 @@ function navbar(props) {
         </Link>
       </span>
       <span className="right-nav flex center-1">
-        <NavLink name="Categories"></NavLink>
+        <span className="categories-link">
+          <NavLink name="Categories"></NavLink>
+          <div className="drawer">
+            <ul>
+              <li>Luckhnowi Poshak</li>
+              <li>Indo-Western</li>
+              <li>Traditional-Wears</li>
+              <li>Formals</li>
+              <li>Beauty</li>
+              <li>Accessories</li>
+              <li>Shoes</li>
+            </ul>
+          </div>
+        </span>
         <Link to="/cart" style={{ color: "black", textDecoration: "none" }}>
           <span className="nav-icon flex">
             <i className="fas fa-shopping-cart"></i>

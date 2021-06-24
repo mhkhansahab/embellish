@@ -8,6 +8,7 @@ import { useState, useEffect } from "react";
 import ProductPage from "./components/productPage/productPage";
 import {BrowserRouter as Router , Switch, Route } from "react-router-dom";
 import CartPage from "./components/cartPage/cartPage";
+import ProductListPage from "./container/productListPage/productList";
 
 function App() {
   const [navStatus, setnavStatus] = useState({ status: false });
@@ -39,6 +40,7 @@ function App() {
       {navStatus.status ? <NavMenu clicked={changeStatus}></NavMenu> : null}
    
       <Switch>
+      <Route path="/productlist"><ProductListPage title="Lucknowi Poshak"></ProductListPage></Route>
       <Route path="/product"><ProductPage></ProductPage></Route>
       <Route path="/cart"><CartPage></CartPage></Route>
       <Route path="/"><ContentContainer></ContentContainer></Route>

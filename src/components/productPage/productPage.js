@@ -38,12 +38,15 @@ function productPage() {
       </div>
     </div>
 
-    {/* <Divider title="Reviews"></Divider>
-    <div className="review-card-container">
+    <Divider title="Reviews"></Divider>
+    <div className="review-card-container flex">
       <ReviewCard></ReviewCard>
       <ReviewCard></ReviewCard>
       <ReviewCard></ReviewCard>
-    </div> */}
+      <ReviewCard></ReviewCard>
+      <ReviewCard></ReviewCard>
+
+    </div>
 
     <Divider title="Similar Products"></Divider>
       <div className="products-card-container">

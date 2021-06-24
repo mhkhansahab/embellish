@@ -32,3 +32,32 @@
      color: black;
      cursor: pointer;
  }
+.drawer{
+    padding : 15px 20px;
+    position : absolute;
+    background-color : white;
+    border-radius : 5px;
+    border : 1px solid grey;
+    right : 90px;
+    top : 55px;
+    z-index : 999;
+    display: none;
+}
+.drawer ul{
+    padding : 0;
+    margin : 0;
+}
+.drawer ul li {
+    list-style : none;
+    margin: 10px 0;
+    padding: 5px 10px;
+}
+.drawer ul li:hover{
+    background-color: lightgrey;
+}
+.categories-link{
+    height: 100%;
+}
+.categories-link:hover .drawer{
+    display: block;
+}
