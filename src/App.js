@@ -9,18 +9,25 @@ import ProductPage from "./components/productPage/productPage";
 import {BrowserRouter as Router , Switch, Route } from "react-router-dom";
 import CartPage from "./components/cartPage/cartPage";
 import ProductListPage from "./container/productListPage/productList";
+import {getAllProducts, getLatestArrivals} from "./store/services/products";
+import {useDispatch} from "react-redux";
 
 function App() {
   const [navStatus, setnavStatus] = useState({ status: false });
   //const [country, setcountry] = useState({country:null})
   //const [modal, setmodal] = useState({status : false})
   
-  // useEffect(() => {
-  //   const country = window.localStorage.getItem("country");
-  //   if(!country){
-  //     setmodal({status:true})
-  //   }
-  // }, [])
+  const dispatch = useDispatch();
+  useEffect(() => {
+    // const country = window.localStorage.getItem("country");
+    // if(!country){
+    //   setmodal({status:true})
+    // }
+
+    dispatch(getAllProducts());
+    dispatch(getLatestArrivals());
+
+  }, [])
 
 
   const changeStatus = () => {
@@ -40,7 +47,7 @@ function App() {
       {navStatus.status ? <NavMenu clicked={changeStatus}></NavMenu> : null}
    
       <Switch>
-      <Route path="/productlist"><ProductListPage title="Lucknowi Poshak"></ProductListPage></Route>
+      <Route path="/productlist"><ProductListPage></ProductListPage></Route>
       <Route path="/product"><ProductPage></ProductPage></Route>
       <Route path="/cart"><CartPage></CartPage></Route>
       <Route path="/"><ContentContainer></ContentContainer></Route>

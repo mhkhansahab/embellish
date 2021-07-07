@@ -3,8 +3,11 @@ import NavLink from "./../../atoms/navlink/navlink";
 import "./navbar.css";
 import "./../../styles/media-queries/responsive-navbar.css";
 import { Link } from "react-router-dom";
+import {useSelector} from "react-redux";
 
-function navbar(props) {
+function Navbar(props) {
+  const categories = useSelector((state) => state.categoryReducer.categories);
+
   return (
     <nav className="navbar flex">
       <span className="logo-container">
@@ -17,17 +20,17 @@ function navbar(props) {
           <NavLink name="Categories"></NavLink>
           <div className="drawer">
             <ul>
-              <li>Luckhnowi Poshak</li>
-              <li>Indo-Western</li>
-              <li>Traditional-Wears</li>
-              <li>Formals</li>
-              <li>Beauty</li>
-              <li>Accessories</li>
-              <li>Shoes</li>
+              {
+                categories ? 
+                categories.map((category)=>{
+                  return <Link to={"/productlist?category=" + category.value} className="nav-item"><li>{category.title}</li></Link>;
+                })
+                : null
+              }
             </ul>
           </div>
         </span>
-        <Link to="/cart" style={{ color: "black", textDecoration: "none" }}>
+        <Link to="/cart" className="nav-item">
           <span className="nav-icon flex">
             <i className="fas fa-shopping-cart"></i>
           </span>
@@ -46,4 +49,4 @@ function navbar(props) {
   );
 }
 
-export default navbar;
+export default Navbar;
