@@ -23,7 +23,11 @@ function ContentContainer() {
 
       <Divider title="Categories"></Divider>
       <div className="product-cards">
-        {categories.map((category) => {
+        {!categories || categories.length <= 1
+        ?
+        <div>No Category Available</div>
+        :
+        categories.map((category) => {
           return (
             <Link to={"/productlist?category=" + category.value}>
               <Card
@@ -34,7 +38,8 @@ function ContentContainer() {
               ></Card>
             </Link>
           );
-        })}
+        })
+        }
       </div>
 
       <Divider title="New Arrival"></Divider>

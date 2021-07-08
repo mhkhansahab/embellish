@@ -11,6 +11,7 @@ import CartPage from "./components/cartPage/cartPage";
 import ProductListPage from "./container/productListPage/productList";
 import {getAllProducts, getLatestArrivals} from "./store/services/products";
 import {useDispatch} from "react-redux";
+import { getAllCategories } from "./store/services/category";
 
 function App() {
   const [navStatus, setnavStatus] = useState({ status: false });
@@ -26,6 +27,7 @@ function App() {
 
     dispatch(getAllProducts());
     dispatch(getLatestArrivals());
+    dispatch(getAllCategories());
 
   }, [])
 

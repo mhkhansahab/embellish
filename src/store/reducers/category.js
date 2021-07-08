@@ -1,3 +1,5 @@
+import { SET_ALL_CATEGORIES } from "../actions/category";
+
 const initialState = {
     categories : [
         {title: "Lucknowi Poshak",value: "poshak", image: "./../../assets/categories/poshak.jpg"},
@@ -11,7 +13,15 @@ const initialState = {
 
 
 const reducer = (state = initialState, actions) =>{
-    //const {type, payload} = actions;
+    const {type, payload} = actions;
+    switch (type) {
+        case SET_ALL_CATEGORIES:
+            return{
+                ...state,
+                categories : payload
+            }
+        default:
+    }
     return state;
 }
 
