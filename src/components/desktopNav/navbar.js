@@ -3,7 +3,7 @@ import NavLink from "./../../atoms/navlink/navlink";
 import "./navbar.css";
 import "./../../styles/media-queries/responsive-navbar.css";
 import { Link } from "react-router-dom";
-import {useSelector} from "react-redux";
+import { useSelector } from "react-redux";
 
 function Navbar(props) {
   const categories = useSelector((state) => state.categoryReducer.categories);
@@ -20,13 +20,19 @@ function Navbar(props) {
           <NavLink name="Categories"></NavLink>
           <div className="drawer">
             <ul>
-              {
-                categories ? 
-                categories.map((category)=>{
-                  return <Link to={"/productlist?category=" + category.value} className="nav-item"><li>{category.title}</li></Link>;
-                })
-                : null
-              }
+              {categories
+                ? categories.map((category) => {
+                    return (
+                      <Link
+                        key={category._id}
+                        to={"/productlist?category=" + category.value}
+                        className="nav-item"
+                      >
+                        <li>{category.name}</li>
+                      </Link>
+                    );
+                  })
+                : null}
             </ul>
           </div>
         </span>

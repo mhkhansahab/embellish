@@ -5,27 +5,16 @@ const carousel = (props) => {
   return (
     <div className="carousel-container-2">
     <Carousel fade>
-      <Carousel.Item>
-        <img
-          className="d-block w-100"
-          src={props.firstImage}
-          alt="First slide"
-        />
-      </Carousel.Item>
-      <Carousel.Item>
-        <img
-          className="d-block w-100"
-          src={props.secondImage}
-          alt="Second slide"
-        />
-      </Carousel.Item>
-      <Carousel.Item>
-        <img
-          className="d-block w-100"
-          src={props.thirdImage}
-          alt="Third slide"
-        />
-      </Carousel.Item>
+    {props.banners.map((banner, index) => {
+          return (
+            <Carousel.Item key = {index}>
+              <img
+                className="d-block w-100"
+                src={banner.img}
+                alt="Slide"
+              />
+            </Carousel.Item>);
+        })}
     </Carousel>
     </div>
   );

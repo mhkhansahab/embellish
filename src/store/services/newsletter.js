@@ -1,4 +1,4 @@
-const baseURL = "https://embellish.herokuapp.com/"
+const baseURL = "https://embellish.herokuapp.com/";
 
 export const setNewsletterSubscription = (email) => async () => {
     const fetchData = {
@@ -13,3 +13,4 @@ export const setNewsletterSubscription = (email) => async () => {
         console.log(err);
     }
 }
+

@@ -12,6 +12,7 @@ import ProductListPage from "./container/productListPage/productList";
 import {getAllProducts, getLatestArrivals} from "./store/services/products";
 import {useDispatch} from "react-redux";
 import { getAllCategories } from "./store/services/category";
+import { getAllBanners } from "./store/services/banner";
 
 function App() {
   const [navStatus, setnavStatus] = useState({ status: false });
@@ -28,6 +29,7 @@ function App() {
     dispatch(getAllProducts());
     dispatch(getLatestArrivals());
     dispatch(getAllCategories());
+    dispatch(getAllBanners());
 
   }, [])
 

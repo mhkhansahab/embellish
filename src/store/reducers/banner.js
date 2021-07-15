@@ -1,17 +1,16 @@
-import { SET_ALL_CATEGORIES } from "../actions/category";
+import { SET_ALL_BANNERS } from "../actions/banner";
 
 const initialState = {
-    categories : [],
+    banners: []
 }
-
 
 const reducer = (state = initialState, actions) =>{
     const {type, payload} = actions;
     switch (type) {
-        case SET_ALL_CATEGORIES:
-            return{
+        case SET_ALL_BANNERS:
+            return {
                 ...state,
-                categories : payload
+                banners : payload
             }
         default:
     }

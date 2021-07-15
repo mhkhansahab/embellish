@@ -16,3 +16,4 @@ export const getAllCategories = ()=> async (dispatch)=> {
         console.log(err);
     }
 }
+
