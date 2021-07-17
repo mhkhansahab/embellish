@@ -17,21 +17,20 @@ function ContentContainer() {
 
       <Divider title="Categories"></Divider>
       <div className="product-cards">
-        {!categories || categories.length <= 1
-        ?
-        <div>No Category Available</div>
-        :
-        categories.map((category) => {
-          return (
-            <Link to={"/productlist?category=" + category.value} key={category._id}>
-              <Card
-                title={category.name}
-                image={category.img}
-              ></Card>
-            </Link>
-          );
-        })
-        }
+        {!categories || categories.length <= 1 ? (
+          <div>No Category Available</div>
+        ) : (
+          categories.map((category) => {
+            return (
+              <Link
+                to={"/productlist?category=" + category.value}
+                key={category._id}
+              >
+                <Card title={category.name} image={category.img}></Card>
+              </Link>
+            );
+          })
+        )}
       </div>
 
       <Divider title="New Arrival"></Divider>
@@ -41,24 +40,19 @@ function ContentContainer() {
         ) : (
           products.map((product, index) => {
             return (
-              <ProductCard
-                key={index}
-                url={product.image}
-                title={product.name}
-                price={product.price}
-                id={product._id}
-              ></ProductCard>
+              <ProductCard product={product} key={product._id}></ProductCard>
             );
           })
         )}
       </div>
-      <Link 
-          style ={{textDecoration:"none"}}
-          to={"/productlist?category=all-products"}>
-            <div className="more-btn">
-              More<div className="transition-div">More</div>
-            </div>
-          </Link>
+      <Link
+        style={{ textDecoration: "none" }}
+        to={"/productlist?category=all_products"}
+      >
+        <div className="more-btn">
+          More<div className="transition-div">More</div>
+        </div>
+      </Link>
     </div>
   );
 }

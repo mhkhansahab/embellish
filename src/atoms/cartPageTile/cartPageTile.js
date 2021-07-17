@@ -1,6 +1,6 @@
 import React from "react";
 import "./cartPageTile.css";
-import image from "./../../assets/tile-images/1.jpg";
+import image from "./../../assets/card-img-2.jpg";
 
 function cartPageTile() {
   return (

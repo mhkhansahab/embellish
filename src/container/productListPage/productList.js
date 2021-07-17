@@ -18,6 +18,8 @@ function ProductList({ location }) {
       .map((category) => {
         if (category.value === searchParam) {
           return category.name;
+        }else if(searchParam === "all_products"){
+          return searchParam;
         }
       })
       .filter(Boolean);
@@ -35,17 +37,14 @@ function ProductList({ location }) {
 
   return (
     <div className="product-list-page-container">
-      <Divider title={pageName}></Divider>
+      <Divider title={pageName[0].replace("_", " ")}></Divider>
       <div className="product-cards">
         {categoryProducts ? categoryProducts.products.length > 0 
           ? categoryProducts.products.map((product) => {
               return (
                 <ProductCard
-                  url={product.image}
-                  title={product.name}
-                  price={product.price_pkr}
+                  product={product}
                   key={product._id}
-                  id={product._id}
                 ></ProductCard>
               );
             })

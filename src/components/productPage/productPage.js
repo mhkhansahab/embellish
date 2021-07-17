@@ -7,10 +7,7 @@ import Divider from "./../../atoms/divider/divider";
 import ReviewCard from "../../atoms/reviewCard/reviewCard";
 import { useSelector, useDispatch } from "react-redux";
 import { withRouter } from "react-router-dom";
-import {
-  getCategoryProducts,
-  getProductDetails,
-} from "../../store/services/products";
+import {getCategoryProducts , getProductDetails} from "../../store/services/products";
 import { Link } from "react-router-dom";
 
 function ProductPage({ location }) {
@@ -70,11 +67,8 @@ function ProductPage({ location }) {
             ? products.products.map((product) => {
                 return (
                   <ProductCard
-                    url={product.image}
-                    title={product.name}
-                    price={product.price_pkr}
+                    product={product}
                     key={product._id}
-                    id={product._id}
                   ></ProductCard>
                 );
               })
