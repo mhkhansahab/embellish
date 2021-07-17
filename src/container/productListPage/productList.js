@@ -2,20 +2,17 @@ import React, { useEffect } from "react";
 import "./productList.css";
 import ProductCard from "./../../atoms/productCard/productCard";
 import Divider from "./../../atoms/divider/divider";
-import { withRouter } from "react-router";
+import { withRouter} from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import { getCategoryProducts } from "../../store/services/products";
 
 function ProductList({ location }) {
   const dispatch = useDispatch();
   const categories = useSelector((state) => state.categoryReducer.categories);
-  const categoryProducts = useSelector(
-    (state) => state.productReducer.categoryProducts
-  );
+  const categoryProducts = useSelector((state) => state.productReducer.categoryProducts);
   let index = 0;
 
   const getPageName = () => {
-    
     const searchParam = location.search.split("=")[1];
     const category = categories
       .map((category) => {
@@ -34,11 +31,11 @@ function ProductList({ location }) {
 
   useEffect(() => {
     dispatch(getCategoryProducts(pageName[0]));
-  }, [index]);
+  }, [index, location]);
 
   return (
     <div className="product-list-page-container">
-      <Divider title={getPageName()}></Divider>
+      <Divider title={pageName}></Divider>
       <div className="product-cards">
         {categoryProducts ? categoryProducts.products.length > 0 
           ? categoryProducts.products.map((product) => {
@@ -48,6 +45,7 @@ function ProductList({ location }) {
                   title={product.name}
                   price={product.price_pkr}
                   key={product._id}
+                  id={product._id}
                 ></ProductCard>
               );
             })
@@ -55,9 +53,12 @@ function ProductList({ location }) {
         : <div>No Product Available</div>
         }
       </div>
-      <div className="more-btn">
+      <br></br>
+      <br></br>
+      <br></br>
+      {/* <div className="more-btn">
         More<div className="transition-div ">More</div>
-      </div>
+      </div> */}
     </div>
   );
 }

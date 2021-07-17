@@ -2,25 +2,26 @@
     position: fixed;
     top: 0;
     width: 100%;
+    height: 100vh;
     z-index: 999;
     background-color: black;
     color: white;
     animation: forwards .6s opacity-changer;
+    overflow-y: auto;
 }
-.nav-menu > ul{
+ul{
     position: relative;
     list-style: none;
     padding: 0;
-    height: 100vh;
     width: 100%;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    padding-top: 80px;
 }
 
 .menu-items{
-    width: 50%;
-    padding: 10px 0;
+    padding: 10px 20px;
     cursor: pointer;
     margin: 5px 0;
     transition: ease .5s color, ease .6s background-color;
@@ -32,9 +33,9 @@
 
 .cancel-container{
     position: absolute;
-    top: 30px;
+    top: 22px;
     color: white;
-    right: 30px;
+    right: 22px;
     cursor: pointer;
 }
 .cancel-icon{
@@ -42,6 +43,10 @@
 }
 .cancel-icon:hover{
     animation: forwards .6s rotate;
+}
+.nav-menu-title{
+    font-size: 24px;
+    font-weight: bold;
 }
 
 @keyframes rotate {

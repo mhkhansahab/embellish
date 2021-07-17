@@ -1,5 +1,5 @@
 .product-page-container{
-    padding: 40px 40px;
+    padding: 40px 0;
     padding-top: 0px;
     width: 100%;
     flex-wrap: wrap;
@@ -10,6 +10,7 @@
     width: 90%;
     margin: 5px;
     min-width: 280px;
+    background-color: #f6f6f8;
 }
 
 .product-container{
@@ -17,6 +18,7 @@
     width: 70%;
     font-family: Montserrat;
     font-weight: 600;
+    justify-content: center;
 }
 
 .product-description{
@@ -52,12 +54,13 @@
 
 @media screen and (min-width: 928px) {
     .carousel-container{
-        width: 50%;
+        width: fit-content;
         margin: 20px;
         min-width: 450px;
         
     }
     .product-container{
-        width: 40%;       
+        width: fit-content;
+        margin-right: 100px;       
     }
 }

@@ -1,4 +1,4 @@
-import { setAllProducts, setCategoryProducts, setLatestArrivals } from "../actions/products";
+import { setAllProducts, setCategoryProducts, setLatestArrivals, setProductDetails } from "../actions/products";
 
 const baseURL = "https://embellish.herokuapp.com/";
 export const getAllProducts = ()=> async (dispatch)=> {
@@ -35,9 +35,24 @@ export const getCategoryProducts = (category)=> async (dispatch)=> {
             "content-type": "application/json",
             "method" : "GET"
         }
-        const response = await fetch(baseURL + "product/" + category, fetchData);
+        const response = await fetch(baseURL + "product/category/" + category, fetchData);
         const jsonResponse = await response.json();
         dispatch(setCategoryProducts(jsonResponse.products, category));
+    }catch(err){
+        console.log(err);
+    }
+}
+
+export const getProductDetails = (id)=> async (dispatch)=> {
+    try{
+        const fetchData = {
+            "content-type": "application/json",
+            "method" : "GET"
+        }
+        const response = await fetch(baseURL + "product/product/" + id, fetchData);
+        const jsonResponse = await response.json();
+        dispatch(setProductDetails(jsonResponse.product));
+        return jsonResponse.product;
     }catch(err){
         console.log(err);
     }

@@ -13,7 +13,7 @@ function ContentContainer() {
 
   return (
     <div>
-      <Carousel banners={banners}></Carousel>
+      <Carousel banners={banners} type="home"></Carousel>
 
       <Divider title="Categories"></Divider>
       <div className="product-cards">
@@ -52,9 +52,13 @@ function ContentContainer() {
           })
         )}
       </div>
-      <div className="more-btn">
-        More<div className="transition-div ">More</div>
-      </div>
+      <Link 
+          style ={{textDecoration:"none"}}
+          to={"/productlist?category=all-products"}>
+            <div className="more-btn">
+              More<div className="transition-div">More</div>
+            </div>
+          </Link>
     </div>
   );
 }

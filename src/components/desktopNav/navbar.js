@@ -41,15 +41,19 @@ function Navbar(props) {
             <i className="fas fa-shopping-cart"></i>
           </span>
         </Link>
-        <span className="nav-icon flex">
+        {/* <span className="nav-icon flex">
           <i className="fas fa-search search-icon"></i>
-        </span>
+        </span> */}
       </span>
       <span className="menu-container" onClick={props.clicked}>
         <i className="fas fa-bars menu-icon"></i>
       </span>
       <span className="search-container">
-        <i className="fas fa-search search-icon"></i>
+      <Link to="/cart" className="nav-item">
+          <span className="nav-icon flex">
+            <i className="fas fa-shopping-cart"></i>
+          </span>
+        </Link>
       </span>
     </nav>
   );

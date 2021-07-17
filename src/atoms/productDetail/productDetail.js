@@ -1,25 +1,23 @@
 import React from 'react';
 import "./productDetail.css";
 
-function productDetail() {
+function productDetail({product}) {
     return (
         <div className="detail-container">
-            <div className="title">Stylish Kurta</div>
-            <div className="price">Rs. 4999</div>
+            <div className="title">{product.name}</div>
+            <div className="price">Rs. {product.price_pkr}</div>
             <div className="sizes">
                 <div className="box-title">Sizes</div>
-                <div className="box-container flex center-1 center-2">
-                    <div className="box flex center-1 center-2">S</div>
-                    <div className="box flex center-1 center-2">M</div>
-                    <div className="box flex center-1 center-2">L</div>
-                    <div className="box flex center-1 center-2">XL</div>
+                <div className="box-container flex center-2">
+                    {product.sizes.map((size,index)=>{
+                        return <div key = {index} className="box flex center-1 center-2">{size}</div>
+                    })}
                 </div>
                 <div className="box-title">Colors</div>
-                <div className="box-container flex center-1 center-2">
-                    <div className="color-box flex center-1 center-2">Blue</div>
-                    <div className="color-box flex center-1 center-2">Black</div>
-                    <div className="color-box flex center-1 center-2">Red</div>
-                    <div className="color-box flex center-1 center-2">Green</div>
+                <div className="box-container flex center-2">
+                    {product.colors.map((color, index)=>{
+                        return <div key ={index} className="color-box flex center-1 center-2">{color}</div>
+                    })}
                 </div>
             </div>
             <div className="add-btn">Add to Cart</div>

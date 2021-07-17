@@ -1,6 +1,7 @@
 .detail-container > *{
     flex-direction: column;
     font-family: "Montserrat Alternates";
+    text-align: center;
 }
 .title{
     font-size: 24px;
@@ -16,20 +17,20 @@
 .box{
     cursor: pointer;
     border: 1px solid black;
-    width: 36px;
     height: 36px;
     margin: 0 2px;
+    padding: 0 5px;
 }
 .color-box{
     cursor: pointer;
     border: 1px solid black;
-    width: 66px;
     height: 36px;
     margin: 0 2px;
-
+    padding: 0 5px;
 }
 .box-container{
     margin-top: 10px;
+    justify-content: center;
 }
 .box-title{
     font-weight: 600;
@@ -47,6 +48,7 @@
     color: white;
     width: fit-content;
     padding: 7px 35px;
+    border: 1px solid white;
 }
 
 .box:hover , .color-box:hover{
@@ -59,11 +61,20 @@
     color: black;
 }
 
-@media screen and (min-width : 768px) {
+@media screen and (min-width : 928px) {
     .title{
         font-size: 30px;
     }
     .price{
         font-size: 26px;
+    }
+    .detail-container > *{
+        text-align: left;
+    }
+    .box-container{
+        justify-content: flex-start;
+    }
+    .add-btn{
+        margin: 50px 0;
     }
 }
