@@ -13,6 +13,9 @@
 .center-2{
   align-items: center;
 }
+.pointer{
+  cursor: pointer;
+}
 .curreny-selector{
   position: fixed;
   bottom: 38px;

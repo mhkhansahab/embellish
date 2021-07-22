@@ -13,9 +13,6 @@ import { getAllProducts, getLatestArrivals } from "./store/services/products";
 import { useDispatch } from "react-redux";
 import { getAllCategories } from "./store/services/category";
 import { getAllBanners } from "./store/services/banner";
-import pakFlag from "./assets/flags/pakistan.png";
-import indFlag from "./assets/flags/india.png";
-import uaeFlag from "./assets/flags/uae.png";
 
 function App() {
   const [navStatus, setnavStatus] = useState({ status: false });

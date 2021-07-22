@@ -53,7 +53,7 @@
     border: 1px solid white;
 }
 
-.box:hover , .color-box:hover{
+.hover, .box:hover , .color-box:hover{
     color: white;
     background-color: black;
 }
@@ -62,6 +62,10 @@
     background-color: white;
     color: black;
 }
+.pp-quantity{
+    margin: 0 auto;
+}
+
 
 @media screen and (min-width : 928px) {
     .title{
@@ -78,5 +82,8 @@
     }
     .add-btn{
         margin: 50px 0;
+    }
+    .pp-quantity {
+        margin: 0;
     }
 }

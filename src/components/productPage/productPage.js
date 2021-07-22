@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Carousel from "./../UI/carousel";
 import ProductDetail from "./../../atoms/productDetail/productDetail";
 import "./productPage.css";
@@ -7,7 +7,10 @@ import Divider from "./../../atoms/divider/divider";
 import ReviewCard from "../../atoms/reviewCard/reviewCard";
 import { useSelector, useDispatch } from "react-redux";
 import { withRouter } from "react-router-dom";
-import {getCategoryProducts , getProductDetails} from "../../store/services/products";
+import {
+  getCategoryProducts,
+  getProductDetails,
+} from "../../store/services/products";
 import { Link } from "react-router-dom";
 
 function ProductPage({ location }) {
@@ -17,8 +20,19 @@ function ProductPage({ location }) {
     (state) => state.productReducer.categoryProducts
   );
   const searchParam = location.search.split("=")[1];
+  const currency = window.localStorage.getItem("country");
 
-  useEffect(async () => {
+  const [orderProduct, setOrderProduct] = useState({
+    id: "",
+    name: "",
+    price: "",
+    quantity: 1,
+    size: "",
+    color: "",
+    image : ""
+  });
+
+  useEffect(() => {
     window.scrollTo({
       top: 0,
       left: 0,
@@ -27,7 +41,115 @@ function ProductPage({ location }) {
     dispatch(getProductDetails(searchParam)).then((data) => {
       dispatch(getCategoryProducts(data.category));
     });
-  }, [location]);
+    if (product) {
+      const price =
+        currency === "AED"
+          ? product.price_uae
+          : currency === "IND"
+          ? product.price_ind
+          : product.price_pkr;
+
+      setOrderProduct({
+        ...orderProduct,
+        currency: currency,
+        price: price,
+      });
+    }
+  }, [location, currency]);
+
+  const incQuantity = () => {
+    setOrderProduct({
+      ...orderProduct,
+      quantity: orderProduct.quantity + 1,
+    });
+  };
+  const decQuantity = () => {
+    if (orderProduct.quantity > 1) {
+      setOrderProduct({
+        ...orderProduct,
+        quantity: orderProduct.quantity - 1,
+      });
+    }
+  };
+
+  const colorSelector = (color) => {
+    const price =
+      currency === "AED"
+        ? product.price_uae
+        : currency === "IND"
+        ? product.price_ind
+        : product.price_pkr;
+
+    setOrderProduct({
+      ...orderProduct,
+      color: color,
+      currency: currency,
+      price: price,
+      name: product.name,
+      id: product._id,
+      image : product.image
+    });
+  };
+  const sizeSelector = (size) => {
+    const price =
+      currency === "AED"
+        ? product.price_uae
+        : currency === "IND"
+        ? product.price_ind
+        : product.price_pkr;
+
+    setOrderProduct({
+      ...orderProduct,
+      size: size,
+      currency: currency,
+      price: price,
+      name: product.name,
+      id: product._id,
+      image: product.image
+    });
+  };
+
+  const addToCart = () => {
+    if (
+      orderProduct.name !== "" &&
+      orderProduct.price !== "" &&
+      orderProduct.id !== "" &&
+      orderProduct.size !== "" &&
+      orderProduct.color !== ""
+    ) {
+      const order = window.localStorage.getItem("order");
+      if(order){
+        let arr = JSON.parse(order);
+        let flag = false;
+        arr.forEach(element => {
+          if(element.id === orderProduct.id && element.size === orderProduct.size && element.color === orderProduct.color && element.currency === orderProduct.currency){
+            element.quantity += orderProduct.quantity;
+            flag = true;
+          }
+        });
+        if(flag){
+          window.localStorage.setItem("order", JSON.stringify(arr));
+        }else{
+          arr = arr.concat(orderProduct);
+          window.localStorage.setItem("order", JSON.stringify(arr));
+        }
+      }else{
+        const arr = [];
+        arr.push(orderProduct);
+        window.localStorage.setItem("order", JSON.stringify(arr));
+      }
+      setOrderProduct({
+        id: "",
+        name: "",
+        price: "",
+        quantity: 1,
+        size: "",
+        color: "",
+        image : ""
+      })
+      alert("Product Added To Cart");
+    }
+  };
 
   return (
     <>
@@ -42,7 +164,17 @@ function ProductPage({ location }) {
           ) : null}
         </div>
         <div className="product-container flex center-2">
-          {product ? <ProductDetail product={product}></ProductDetail> : null}
+          {product ? (
+            <ProductDetail
+              product={product}
+              orderProduct={orderProduct}
+              incQuantity={incQuantity}
+              decQuantity={decQuantity}
+              sizeSelector={sizeSelector}
+              colorSelector={colorSelector}
+              addToCart={addToCart}
+            ></ProductDetail>
+          ) : null}
         </div>
         <div className="empty-container"></div>
         <Divider title="Description"></Divider>

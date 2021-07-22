@@ -1,8 +1,16 @@
 import React from "react";
 import "./productDetail.css";
 
-function productDetail({ product }) {
-    const currency = window.localStorage.getItem("country");
+function productDetail({
+  product,
+  orderProduct,
+  decQuantity,
+  incQuantity,
+  sizeSelector,
+  colorSelector,
+  addToCart
+}) {
+  const currency = window.localStorage.getItem("country");
 
   return (
     <div className="detail-container">
@@ -18,25 +26,68 @@ function productDetail({ product }) {
         <div className="box-title">Sizes</div>
         <div className="box-container flex center-2">
           {product.sizes.map((size, index) => {
-            return (
-              <div key={index} className="box flex center-1 center-2">
-                {size}
-              </div>
-            );
+            if (orderProduct.size === size) {
+              return (
+                <div
+                  key={index}
+                  className="box flex center-1 center-2 hover"
+                  onClick={() => sizeSelector(size)}
+                >
+                  {size}
+                </div>
+              );
+            } else {
+              return (
+                <div
+                  key={index}
+                  className="box flex center-1 center-2"
+                  onClick={() => sizeSelector(size)}
+                >
+                  {size}
+                </div>
+              );
+            }
           })}
         </div>
         <div className="box-title">Colors</div>
         <div className="box-container flex center-2">
           {product.colors.map((color, index) => {
-            return (
-              <div key={index} className="color-box flex center-1 center-2">
-                {color}
-              </div>
-            );
+            if (orderProduct.color === color) {
+              return (
+                <div
+                  key={index}
+                  className="color-box flex center-1 center-2 hover"
+                  onClick={() => colorSelector(color)}
+                >
+                  {color}
+                </div>
+              );
+            } else {
+              return (
+                <div
+                  key={index}
+                  className="color-box flex center-1 center-2"
+                  onClick={() => colorSelector(color)}
+                >
+                  {color}
+                </div>
+              );
+            }
           })}
         </div>
+        <div className="box-title">Quantity</div>
+        <div className="quantity-container pp-quantity">
+          <div onClick={() => decQuantity()} className="pointer">
+            <i class="fas fa-minus"></i>
+          </div>
+          <div>{orderProduct.quantity}</div>
+          <div onClick={() => incQuantity()} className="pointer">
+            <i class="fas fa-plus"></i>
+          </div>
+        </div>
       </div>
-      <div className="add-btn">Add to Cart</div>
+
+      <div className="add-btn" onClick={()=>addToCart()}>Add to Cart</div>
     </div>
   );
 }

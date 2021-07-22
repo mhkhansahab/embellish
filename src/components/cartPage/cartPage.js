@@ -1,19 +1,24 @@
-import React from "react";
+import React, {useEffect} from "react";
 import "./cartPage.css";
 import CartPageTile from "../../atoms/cartPageTile/cartPageTile";
 import Divider from "../../atoms/divider/divider";
 
-function cartPage() {
+function CartPage() {
+  const orders = JSON.parse(window.localStorage.getItem("order"));
+  useEffect(() => {
+    
+    }, []);
+
   return (
     <div className="cart-page-container">
-      {/* <div className="cart-page-header flex center-1 center-2">
-        Shopping Cart
-      </div> */}
       <Divider title = "Shopping Cart"></Divider>
-      <CartPageTile></CartPageTile>
-      <CartPageTile></CartPageTile>
-      <CartPageTile></CartPageTile>
-      <CartPageTile></CartPageTile>
+      {orders && orders.length > 0 
+      ?
+      orders.map((order, index)=>{
+        return <CartPageTile order={order} key={index}></CartPageTile>
+      })
+      : <div>Your Cart is Empty</div>
+    }
       <div className="more-btn checkout-btn">
         Proceed to Checkout<div className="transition-div checkout-transition-div">Proceed to Checkout</div>
       </div>
@@ -21,4 +26,4 @@ function cartPage() {
   );
 }
 
-export default cartPage;
+export default CartPage;

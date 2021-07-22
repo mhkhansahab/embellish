@@ -2,24 +2,21 @@ import React from "react";
 import "./cartPageTile.css";
 import image from "./../../assets/card-img-2.jpg";
 
-function cartPageTile() {
+function cartPageTile({order}) {
   return (
     <div className="tile-container">
       <div className="cart-page-tile">
         <div
           className="cart-page-tile-img"
-          style={{ backgroundImage: "url(" + image + ")" }}
+          style={{ backgroundImage: "url(" + order.image + ")" }}
         ></div>
         <div className="cart-page-tile-detail">
-          <div>Aurel</div>
+          <div>{order.name}</div>
           <div>
-            Type: <b>Slim Fit</b>
+            Size: <b>{order.size}</b>
           </div>
           <div>
-            Size: <b>Small</b>
-          </div>
-          <div>
-            Color: <b>Pink</b>
+            Color: <b>{order.color}</b>
           </div>
           <div className="tile-icon-container">
             <i class="far fa-trash-alt"></i>
@@ -28,11 +25,11 @@ function cartPageTile() {
       </div>
       <div className="cart-page-tile-btns">
         <div className="quantity-container">
-            <div><i class="fas fa-minus"></i></div>
-            <div>4</div>
-            <div><i class="fas fa-plus"></i></div>
+            <div className="pointer"><i class="fas fa-minus"></i></div>
+            <div>{order.quantity}</div>
+            <div className="pointer"><i class="fas fa-plus"></i></div>
         </div>
-        <div className="price-container">Rs. 2990.00</div>
+        <div className="price-container">{order.price + " " + order.currency}</div>
       </div>
     </div>
   );
