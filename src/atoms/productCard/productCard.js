@@ -20,7 +20,7 @@ const ProductCard = (props) => {
               : props.product.price_pkr + " " + currency
             }
           </div>
-          <div className="product-card-btn">Add to Cart</div>
+          <div className="product-card-btn">View Details</div>
         </div>
       </div>
     </Link>
