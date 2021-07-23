@@ -2,6 +2,7 @@ import React, { useEffect , useState} from "react";
 import "./cartPage.css";
 import CartPageTile from "../../atoms/cartPageTile/cartPageTile";
 import Divider from "../../atoms/divider/divider";
+import { Link } from "react-router-dom";
 
 function CartPage() {
   const orders = JSON.parse(window.localStorage.getItem("order"));
@@ -61,12 +62,17 @@ function CartPage() {
       ) : (
         <div>Your Cart is Empty</div>
       )}
+      <Link
+      style={{ textDecoration: "none" }}
+      to={"/checkout"}
+      >
       <div className="more-btn checkout-btn">
         Proceed to Checkout
         <div className="transition-div checkout-transition-div">
           Proceed to Checkout
         </div>
       </div>
+      </Link>
     </div>
   );
 }

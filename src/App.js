@@ -13,6 +13,9 @@ import { getAllProducts, getLatestArrivals } from "./store/services/products";
 import { useDispatch } from "react-redux";
 import { getAllCategories } from "./store/services/category";
 import { getAllBanners } from "./store/services/banner";
+import ReviewPage from "./atoms/Review/Submit_Review";
+import OrderPage from "./atoms/OrderDetails/order_details";
+import CheckoutPage from "./atoms/Checkout/check_out";
 
 function App() {
   const [navStatus, setnavStatus] = useState({ status: false });
@@ -62,6 +65,15 @@ function App() {
           </Route>
           <Route path="/cart">
             <CartPage></CartPage>
+          </Route>
+          <Route path="/submit_review">
+            <ReviewPage></ReviewPage>
+          </Route>
+          <Route path="/show_order">
+            <OrderPage></OrderPage>
+          </Route>
+          <Route path="/checkout">
+            <CheckoutPage></CheckoutPage>
           </Route>
           <Route path="/">
             <ContentContainer></ContentContainer>
