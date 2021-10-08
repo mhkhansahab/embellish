@@ -1,0 +1,43 @@
+.modal-container{
+    height: 100vh;
+    width: 100%;
+    background-color: rgb(128, 128, 128,0.6);
+    position: fixed;
+    top: 0;
+    z-index: 50;
+}
+.modal > div{
+    margin: 10px auto;
+}
+.modal{
+    position: absolute;
+    background-color: black;
+    color: white;
+    flex-direction: column;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    height: fit-content;
+    width: fit-content;
+    padding: 100px;
+    margin: auto;
+    border-radius: 5px;
+}
+.modal-btn{
+    background-color: white;
+    color: black;
+    padding: 5px 20px;
+    cursor: pointer;
+}
+
+
+@media screen and (max-width: 550px) {
+   
+    .modal{
+        width: 80%;
+        padding: 50px 15px;
+    }
+
+  }
+  

@@ -1,0 +1,84 @@
+.submit_heading {
+  font-family: "Montserrat";
+  text-align: center;
+  margin-top: 50px;
+}
+
+.review_form_c {
+  margin-top: 20px;
+  width: 500px;
+  padding: 30px;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: "Montserrat";
+  margin-bottom: 50px;
+  border: solid 2px #000;
+}
+
+.label_fields_c {
+  display: inline;
+  font-weight: 600;
+  color: #000;
+  margin-bottom: 15px;
+  font-size: large;
+}
+
+.input_fields_c,
+.select_stars_c {
+  padding: 13px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: "Montserrat";
+  font-size: medium;
+  margin-top: 7px;
+  border: solid 1px #000;
+}
+
+.select_stars {
+  width: fit-content;
+  font-family: "Montserrat";
+  font-size: large;
+  margin-left: 19px;
+  padding: 9px 15px;
+  border: 0;
+}
+
+.submit_button_c {
+  width: 80%;
+  font-family: "Montserrat";
+  font-size: large;
+  border: 0;
+  background-color: #000;
+  padding: 9px 15px;
+  color: #fff;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.input_fields:focus,
+.select_stars:focus {
+  outline: none;
+}
+
+.select_stars_c {
+  width: 100%;
+}
+
+@media screen and (max-width: 550px) {
+  .review_form_c {
+    width: 80%;
+    padding: 25px 17px;
+  }
+
+  .label_fields_c {
+    font-size: medium;
+  }
+
+  .input_fields_c,
+  .select_stars_c {
+    font-size: medium;
+    padding: 7px;
+  }
+}

@@ -1,0 +1,91 @@
+.submit_heading{
+
+    font-family: 'Montserrat';
+    text-align: center;
+    margin-top: 50px;
+
+}
+
+.review_form{
+    margin-top: 50px;
+    width: 500px;
+    background-color: black;
+    padding: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: 'Montserrat';
+    margin-bottom: 50px;
+    /* text-align: center; */
+}
+
+.label_fields{
+    color:#fff;
+    text-align: start !important;
+    margin-bottom: 15px;
+    font-size: x-large;
+}
+
+.input_fields{
+    padding: 13px;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    
+    resize: vertical;
+    min-height: 100px;
+    font-family: 'Montserrat';
+    font-size: large;
+    
+    
+}
+
+.select_stars{
+    width: fit-content;
+    font-family: 'Montserrat';
+    font-size: large;
+    margin-left: 19px;
+    padding: 9px 15px;
+    border: 0;
+    
+}
+
+
+.submit_button{
+
+    width: 80%;
+    font-family: 'Montserrat';
+    font-size: large;
+    border: 0;
+    background-color: #fff;
+    padding: 9px 15px;
+
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+
+}
+
+
+.input_fields:focus , .select_stars:focus{
+    outline: none;
+}
+
+
+
+@media screen and (max-width: 550px) {
+
+    .review_form{
+        width: 85%;
+        padding: 25px 17px;
+    }
+
+    .label_fields{
+        font-size: large;
+    }
+
+    .select_stars , .input_fields{
+        font-size: medium;
+        padding: 7px;
+    }
+
+}

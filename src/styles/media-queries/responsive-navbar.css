@@ -1,0 +1,26 @@
+@media screen and (min-width: 800px) {
+    .menu-container, .search-container{
+        display: none;
+    }
+    .right-nav > *{
+        cursor: pointer;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+    .right-nav{
+        display: flex;
+    }
+    .logo-container{
+        margin: 0;
+    }
+}
+
+@media screen and (min-width: 968px) {
+    .logo-container > img{
+        width: 300px;
+    }
+    .right-nav > *{
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+}

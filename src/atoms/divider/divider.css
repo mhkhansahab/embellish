@@ -1,0 +1,53 @@
+.divider-container{
+    position: relative;
+    width: 80%;
+    background-color: white;
+    height: 80px;
+    margin: 0 auto;
+    margin-top: 0%;
+}
+.divider{
+    height: 3px;
+    margin-top: 45px;
+    background-color: black;
+    width: 100%;
+    position: absolute;
+}
+.myTitles{
+    font-family: 'Montserrat';
+    position: absolute;
+    margin-top: 28px;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 14px;
+    background-color: white;
+    text-transform: capitalize;
+    color: black;
+    font-size: 22px;
+    font-weight: 600;
+    text-align: center;
+    width: fit-content;
+}
+
+@media screen and (min-width : 768px) {
+    .divider-container{
+        margin-bottom: 30px;
+    }
+    .myTitles{
+        font-size: 36px;
+        margin-top: 30px;
+    }
+    .divider{
+        margin-top: 60px;
+    }
+    
+}
+@media screen and (min-width : 1366px) {
+    .divider-container{
+        width: 40%;
+        height: 100px;
+    }
+    
+}

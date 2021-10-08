@@ -1,0 +1,27 @@
+.App{
+  text-align: center;
+}
+*{
+  font-family: 'Montserrat';
+}
+.flex{
+  display: flex;
+}
+.center-1{
+  justify-content: center;
+}
+.center-2{
+  align-items: center;
+}
+.pointer{
+  cursor: pointer;
+}
+.curreny-selector{
+  position: fixed;
+  bottom: 38px;
+  left: 0px;
+}
+.curreny-selector:active{
+  outline: none;
+  border: none;
+}
