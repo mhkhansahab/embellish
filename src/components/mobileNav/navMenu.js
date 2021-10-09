@@ -16,6 +16,7 @@ const NavMenu = (props)=>{
                         key={category._id}
                         to={"/productlist?category=" + category.value}
                         style={{textDecoration:"none", color:"white"}}
+                        onClick={props.clicked}
                       >
                         <li className ="menu-items">{category.name}</li>
                       </Link>
