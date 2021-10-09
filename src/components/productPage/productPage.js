@@ -5,6 +5,7 @@ import "./productPage.css";
 import ProductCard from "./../../atoms/productCard/productCard";
 import Divider from "./../../atoms/divider/divider";
 import ReviewCard from "../../atoms/reviewCard/reviewCard";
+import Splash from "../../atoms/splash/splash";
 import { useSelector, useDispatch } from "react-redux";
 import { withRouter } from "react-router-dom";
 import {
@@ -29,7 +30,7 @@ function ProductPage({ location }) {
     quantity: 1,
     size: "",
     color: "",
-    image : ""
+    image: "",
   });
 
   useEffect(() => {
@@ -42,13 +43,10 @@ function ProductPage({ location }) {
       dispatch(getCategoryProducts(data.category));
     });
     if (product) {
-      const price =
-        currency === "AED"
-          ? product.price_uae
-          : product.price_ind
-          // : currency === "IND"
-          // ? product.price_ind
-          // : product.price_pkr;
+      const price = currency === "AED" ? product.price_uae : product.price_ind;
+      // : currency === "IND"
+      // ? product.price_ind
+      // : product.price_pkr;
 
       setOrderProduct({
         ...orderProduct,
@@ -74,13 +72,10 @@ function ProductPage({ location }) {
   };
 
   const colorSelector = (color) => {
-    const price =
-      currency === "AED"
-        ? product.price_uae
-        : product.price_ind
-        // : currency === "IND"
-        // ? product.price_ind
-        // : product.price_pkr;
+    const price = currency === "AED" ? product.price_uae : product.price_ind;
+    // : currency === "IND"
+    // ? product.price_ind
+    // : product.price_pkr;
 
     setOrderProduct({
       ...orderProduct,
@@ -89,17 +84,14 @@ function ProductPage({ location }) {
       price: price,
       name: product.name,
       id: product._id,
-      image : product.image
+      image: product.image,
     });
   };
   const sizeSelector = (size) => {
-    const price =
-      currency === "AED"
-        ? product.price_uae
-        : product.price_ind
-        // : currency === "IND"
-        // ? product.price_ind
-        // : product.price_pkr;
+    const price = currency === "AED" ? product.price_uae : product.price_ind;
+    // : currency === "IND"
+    // ? product.price_ind
+    // : product.price_pkr;
 
     setOrderProduct({
       ...orderProduct,
@@ -108,7 +100,7 @@ function ProductPage({ location }) {
       price: price,
       name: product.name,
       id: product._id,
-      image: product.image
+      image: product.image,
     });
   };
 
@@ -121,22 +113,27 @@ function ProductPage({ location }) {
       orderProduct.color !== ""
     ) {
       const order = window.localStorage.getItem("order");
-      if(order){
+      if (order) {
         let arr = JSON.parse(order);
         let flag = false;
-        arr.forEach(element => {
-          if(element.id === orderProduct.id && element.size === orderProduct.size && element.color === orderProduct.color && element.currency === orderProduct.currency){
+        arr.forEach((element) => {
+          if (
+            element.id === orderProduct.id &&
+            element.size === orderProduct.size &&
+            element.color === orderProduct.color &&
+            element.currency === orderProduct.currency
+          ) {
             element.quantity += orderProduct.quantity;
             flag = true;
           }
         });
-        if(flag){
+        if (flag) {
           window.localStorage.setItem("order", JSON.stringify(arr));
-        }else{
+        } else {
           arr = arr.concat(orderProduct);
           window.localStorage.setItem("order", JSON.stringify(arr));
         }
-      }else{
+      } else {
         const arr = [];
         arr.push(orderProduct);
         window.localStorage.setItem("order", JSON.stringify(arr));
@@ -148,80 +145,84 @@ function ProductPage({ location }) {
         quantity: 1,
         size: "",
         color: "",
-        image : ""
-      })
+        image: "",
+      });
       alert("Product Added To Cart");
     }
   };
 
-  return (
-    <>
-      <div className="product-page-container flex">
-        <div className="carousel-container">
+  if (product === null) {
+    return <Splash />;
+  } else {
+    return (
+      <>
+        <div className="product-page-container flex">
+          <div className="carousel-container">
+            {product ? (
+              <Carousel
+                banners={product.more_images}
+                type="product-page"
+                style={{ height: "500px" }}
+              ></Carousel>
+            ) : null}
+          </div>
+          <div className="product-container flex center-2">
+            {product ? (
+              <ProductDetail
+                product={product}
+                orderProduct={orderProduct}
+                incQuantity={incQuantity}
+                decQuantity={decQuantity}
+                sizeSelector={sizeSelector}
+                colorSelector={colorSelector}
+                addToCart={addToCart}
+              ></ProductDetail>
+            ) : null}
+          </div>
+          <div className="empty-container"></div>
+          <Divider title="Description"></Divider>
           {product ? (
-            <Carousel
-              banners={product.more_images}
-              type="product-page"
-              style={{ height: "500px" }}
-            ></Carousel>
+            <div className="product-description">{product.description}</div>
           ) : null}
         </div>
-        <div className="product-container flex center-2">
+
+        <Divider title="Reviews"></Divider>
+        <div className="review-card-container flex">
+          <ReviewCard></ReviewCard>
+          <ReviewCard></ReviewCard>
+          <ReviewCard></ReviewCard>
+          <ReviewCard></ReviewCard>
+          <ReviewCard></ReviewCard>
+        </div>
+
+        <Divider title="Similar Products"></Divider>
+        <div className="products-card-container">
+          <div className="product-cards">
+            {products
+              ? products.products.map((product) => {
+                  return (
+                    <ProductCard
+                      product={product}
+                      key={product._id}
+                    ></ProductCard>
+                  );
+                })
+              : null}
+          </div>
           {product ? (
-            <ProductDetail
-              product={product}
-              orderProduct={orderProduct}
-              incQuantity={incQuantity}
-              decQuantity={decQuantity}
-              sizeSelector={sizeSelector}
-              colorSelector={colorSelector}
-              addToCart={addToCart}
-            ></ProductDetail>
+            <Link
+              style={{ textDecoration: "none" }}
+              to={"/productlist?category=" + product.category}
+            >
+              <div className="more-btn">
+                More<div className="transition-div">More</div>
+              </div>
+            </Link>
           ) : null}
         </div>
-        <div className="empty-container"></div>
-        <Divider title="Description"></Divider>
-        {product ? (
-          <div className="product-description">{product.description}</div>
-        ) : null}
-      </div>
-
-      <Divider title="Reviews"></Divider>
-      <div className="review-card-container flex">
-        <ReviewCard></ReviewCard>
-        <ReviewCard></ReviewCard>
-        <ReviewCard></ReviewCard>
-        <ReviewCard></ReviewCard>
-        <ReviewCard></ReviewCard>
-      </div>
-
-      <Divider title="Similar Products"></Divider>
-      <div className="products-card-container">
-        <div className="product-cards">
-          {products
-            ? products.products.map((product) => {
-                return (
-                  <ProductCard
-                    product={product}
-                    key={product._id}
-                  ></ProductCard>
-                );
-              })
-            : null}
-        </div>
-        {product ? (
-          <Link
-            style={{ textDecoration: "none" }}
-            to={"/productlist?category=" + product.category}
-          >
-            <div className="more-btn">
-              More<div className="transition-div">More</div>
-            </div>
-          </Link>
-        ) : null}
-      </div>
-    </>
-  );
+      </>
+    );
+  }
 }
 
 export default withRouter(ProductPage);

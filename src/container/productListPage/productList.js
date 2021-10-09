@@ -5,6 +5,7 @@ import Divider from "./../../atoms/divider/divider";
 import { withRouter} from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import { getCategoryProducts } from "../../store/services/products";
+import Splash from "../../atoms/splash/splash";
 
 function ProductList({ location }) {
   const dispatch = useDispatch();
@@ -35,6 +36,11 @@ function ProductList({ location }) {
     dispatch(getCategoryProducts(pageName[0]));
   }, [index, location]);
 
+  if(categories.length===0){
+    return(
+      <Splash/>
+    )
+  }else{
   return (
     <div className="product-list-page-container">
       <Divider title={pageName[0]?.replace("_", " ")}></Divider>
@@ -60,6 +66,7 @@ function ProductList({ location }) {
       </div> */}
     </div>
   );
+}
 }
 
 export default withRouter(ProductList);
