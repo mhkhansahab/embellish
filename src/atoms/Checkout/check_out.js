@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./check_out.css";
 import Divider from "../divider/divider";
 import Splash from "../splash/splash";
+import Swal from 'sweetalert2'
 
 export default class check_out extends Component {
   constructor(props) {
@@ -83,19 +84,29 @@ export default class check_out extends Component {
             console.log(message);
 
             if (message !== "Error") {
-              alert(
-                "Order placed Successfully, you will receive a confirmation email soon."
-              );
+              Swal.fire({
+                icon: 'success',
+                title: 'Success',
+                text: 'Order placed Successfully, you will receive a confirmation email soon.',
+              })
               window.location.href = "/";
             } else {
-              alert("Some error occurred. Try again.");
+              Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Something went wrong!',
+              })
             }
           })
           .catch((error) => {
             this.setState({
               load_status: false,
             });
-            alert("Some error occurred. Try again.");
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: 'Something went wrong!',
+            })
           });
       } else if (this.state.payment_method === "online") {
         if (
@@ -164,12 +175,19 @@ export default class check_out extends Component {
                 console.log(message);
 
                 if (message !== "Error") {
-                  alert(
-                    "Order placed Successfully, you will receive a confirmation email soon."
-                  );
+                  Swal.fire({
+                    icon: 'success',
+                    title: 'Success',
+                    text: 'Order placed Successfully, you will receive a confirmation email soon.',
+                  })
+                  
                   window.location.href = "/";
                 } else {
-                  alert("Some error occurred. Try again.");
+                  Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Something went wrong!',
+                  })
                 }
               })
               .catch((error) => {
@@ -178,7 +196,11 @@ export default class check_out extends Component {
                 });
 
                 console.log(error.message);
-                alert("Some error occurred. Try again.");
+                Swal.fire({
+                  icon: 'error',
+                  title: 'Oops...',
+                  text: 'Something went wrong!',
+                })
               });
           };
 
@@ -186,14 +208,26 @@ export default class check_out extends Component {
             this.setState({
               load_status: false,
             });
-            alert("Some error occurred. Try again.");
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: 'Something went wrong!',
+            })
           };
         } else {
-          alert("Enter All Information");
+          Swal.fire({
+            icon: 'info',
+            title: 'Information Required!',
+            text: 'Enter All Information',
+          })
         }
       }
     } else {
-      alert("Enter All Information");
+      Swal.fire({
+        icon: 'info',
+        title: 'Information Required!',
+        text: 'Enter All Information',
+      })
     }
   }
 

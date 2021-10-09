@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Divider from "../divider/divider";
 import Splash from "../splash/splash";
 import "./submit_review.css";
+import Swal from 'sweetalert2'
 
 class SubmitReview extends Component {
   constructor(props) {
@@ -51,20 +52,37 @@ class SubmitReview extends Component {
           });
           let message = result.msg;
           if (message === "success") {
-            alert("Thanks for submitting your valuable review.");
+            Swal.fire({
+              icon: 'success',
+              title: 'Success',
+              text: "Thanks for submitting your valuable review.",
+            })
+            
             window.location.href = "/";
           } else {
-            alert("Some error occurred. Try again.");
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: 'Something went wrong!',
+            })
           }
         })
         .catch((error) => {
           this.setState({
             load_status: false,
           });
-          alert("Some error occurred. Try again.");
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Something went wrong!',
+          })
         });
     } else {
-      alert("Submit All Information.");
+      Swal.fire({
+        icon: 'info',
+        title: 'Information Required!',
+        text: 'Enter All Information',
+      })
     }
   }
 

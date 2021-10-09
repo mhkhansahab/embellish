@@ -13,6 +13,7 @@ import {
   getProductDetails,
 } from "../../store/services/products";
 import { Link } from "react-router-dom";
+import Swal from 'sweetalert2';
 
 function ProductPage({ location }) {
   const dispatch = useDispatch();
@@ -147,7 +148,11 @@ function ProductPage({ location }) {
         color: "",
         image: "",
       });
-      alert("Product Added To Cart");
+      Swal.fire({
+        icon: 'success',
+        title: 'Success',
+        text: 'Product Added To Cart',
+      })
     }
   };
 
