@@ -4,7 +4,7 @@ import "./carousel.css";
 const carousel = (props) => {
   return (
     <div className="carousel-container-2">
-    <Carousel fade style={props.style}>
+    <Carousel slide={false} fade={false} style={props.style}>
       {props.type !== "home"
       ? props.banners.map((banner, index) => {
         return (

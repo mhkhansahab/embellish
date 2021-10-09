@@ -15,9 +15,10 @@ const ProductCard = (props) => {
           <div className="card-text p-price">
             {currency === "AED"
               ? props.product.price_uae + " " + currency
-              : currency === "IND"
-              ? props.product.price_ind + " " + currency
-              : props.product.price_pkr + " " + currency
+              : props.product.price_ind + " " + currency
+              // : currency === "IND"
+              // ? props.product.price_ind + " " + currency
+              // : props.product.price_pkr + " " + currency
             }
           </div>
           <div className="product-card-btn">View Details</div>

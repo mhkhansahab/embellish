@@ -9,11 +9,11 @@ function reviewCard(props) {
             </div>
             <div className="review-by">- Salman Ahmed</div>
             <div className="review-rating">
-                <i class="far fa-star"></i>
-                <i class="far fa-star"></i>
-                <i class="far fa-star"></i>
-                <i class="far fa-star"></i>
-                <i class="far fa-star"></i>
+                <i className="far fa-star"></i>
+                <i className="far fa-star"></i>
+                <i className="far fa-star"></i>
+                <i className="far fa-star"></i>
+                <i className="far fa-star"></i>
             </div>
         </div>
     )

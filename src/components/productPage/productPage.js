@@ -45,9 +45,10 @@ function ProductPage({ location }) {
       const price =
         currency === "AED"
           ? product.price_uae
-          : currency === "IND"
-          ? product.price_ind
-          : product.price_pkr;
+          : product.price_ind
+          // : currency === "IND"
+          // ? product.price_ind
+          // : product.price_pkr;
 
       setOrderProduct({
         ...orderProduct,
@@ -76,9 +77,10 @@ function ProductPage({ location }) {
     const price =
       currency === "AED"
         ? product.price_uae
-        : currency === "IND"
-        ? product.price_ind
-        : product.price_pkr;
+        : product.price_ind
+        // : currency === "IND"
+        // ? product.price_ind
+        // : product.price_pkr;
 
     setOrderProduct({
       ...orderProduct,
@@ -94,9 +96,10 @@ function ProductPage({ location }) {
     const price =
       currency === "AED"
         ? product.price_uae
-        : currency === "IND"
-        ? product.price_ind
-        : product.price_pkr;
+        : product.price_ind
+        // : currency === "IND"
+        // ? product.price_ind
+        // : product.price_pkr;
 
     setOrderProduct({
       ...orderProduct,

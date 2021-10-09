@@ -10,7 +10,7 @@ const modal=(props)=> {
                     <select value={props.Country} onChange={(e)=>props.setCountry(e.target.value)}>
                         <option value="AED">United Arab Emirates</option>
                         <option value="INR">India</option>
-                        <option value="PKR">Pakistan</option>
+                        {/* <option value="PKR">Pakistan</option> */}
                     </select>
                 </div>
                 <div className="modal-btn" onClick={props.countrySelector}>Done</div>

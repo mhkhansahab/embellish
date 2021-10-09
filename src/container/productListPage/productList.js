@@ -37,7 +37,7 @@ function ProductList({ location }) {
 
   return (
     <div className="product-list-page-container">
-      <Divider title={pageName[0].replace("_", " ")}></Divider>
+      <Divider title={pageName[0]?.replace("_", " ")}></Divider>
       <div className="product-cards">
         {categoryProducts ? categoryProducts.products.length > 0 
           ? categoryProducts.products.map((product) => {

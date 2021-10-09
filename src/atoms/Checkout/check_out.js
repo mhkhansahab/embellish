@@ -11,7 +11,7 @@ export default class check_out extends Component {
       email: "",
       address: "",
       phone: "",
-      currency: "PKR",
+      currency: "AED",
       total: "",
       payment_method: "cod",
       city: "",
@@ -28,35 +28,11 @@ export default class check_out extends Component {
 
   componentDidMount() {
     const crncy = window.localStorage.getItem("country");
-    // const orders = JSON.parse(window.localStorage.getItem("order"));
-
-    // orders.forEach((order) => {
-    //   let item = {
-    //     product_id: order.id,
-    //     qty: order.quantity,
-    //     color: order.color,
-    //     size: order.size,
-    //     img: order.image,
-    //     name: order.name,
-    //     price_pp: order.price
-    //   };
-    //   this.state.items.push(item);
-    // });
-
-    // let item = {
-    //   product_id: "asdasdasd",
-    //   qty: 3,
-    //   color: "Blue",
-    //   size: "Large",
-    //   img: "https://images.unsplash.com/photo-1541963463532-d68292c34b19?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mnx8fGVufDB8fHx8&w=1000&q=80",
-    //   name: "Kurta",
-    //   price_pp: 300,
-    // };
-    // this.state.items.push(item);
 
     this.setState({
       ...this.state,
       currency: crncy,
+      country : crncy === "AED" ? "United Arab Emirates" : "India"
     });
   }
 
@@ -99,7 +75,7 @@ export default class check_out extends Component {
               alert(
                 "Order placed Successfully, you will receive a confirmation email soon."
               );
-              //   window.location.href = "/";
+              
             } else {
               alert("Some error occurred. Try again.");
             }
@@ -128,9 +104,11 @@ export default class check_out extends Component {
           });
 
           var successCallback = (data) => {
-            // console.log(data.response.token.token);
-
-            this.state.token = data.response.token.token;
+            this.setState({
+              ...this.state,
+              token : data.response.token.token
+            })
+        
             const requestOptions = {
               method: "POST",
               headers: { "Content-Type": "application/json" },
@@ -197,8 +175,11 @@ export default class check_out extends Component {
               className="input_fields_c"
               placeholder="Full Name..."
               onChange={(e) => {
-                this.state.name = e.target.value;
-                this.setState({});
+                this.setState({
+                  ...this.state,
+                  name : e.target.value
+                })
+                
               }}
               value={this.state.name}
             ></input>
@@ -209,8 +190,10 @@ export default class check_out extends Component {
               className="input_fields_c"
               placeholder="Email..."
               onChange={(e) => {
-                this.state.email = e.target.value;
-                this.setState({});
+                this.setState({
+                  ...this.state,
+                  email : e.target.value
+                })
               }}
               value={this.state.email}
             ></input>
@@ -221,8 +204,10 @@ export default class check_out extends Component {
               className="input_fields_c"
               placeholder="Number with country code..."
               onChange={(e) => {
-                this.state.phone = e.target.value;
-                this.setState({});
+                this.setState({
+                  ...this.state,
+                  phone : e.target.value
+                })
               }}
               value={this.state.phone}
               type="tel"
@@ -234,8 +219,10 @@ export default class check_out extends Component {
               className="input_fields_c"
               placeholder="Address..."
               onChange={(e) => {
-                this.state.address = e.target.value;
-                this.setState({});
+                this.setState({
+                  ...this.state,
+                  address : e.target.value
+                })
               }}
               value={this.state.address}
             ></input>
@@ -245,8 +232,10 @@ export default class check_out extends Component {
             <select
               className="select_stars_c"
               onChange={(e) => {
-                this.state.country = e.target.value;
-                this.setState({});
+                this.setState({
+                  ...this.state,
+                  country : e.target.value
+                })
               }}
               name={this.state.country}
             >
@@ -254,7 +243,7 @@ export default class check_out extends Component {
                 United Arab Emirates
               </option>
               <option defaultValue="India">India</option>
-              <option defaultValue="Pakistan">Pakistan</option>
+              {/* <option defaultValue="Pakistan">Pakistan</option> */}
             </select>{" "}
             <br /> <br />
             <label className="label_fields_c">City:</label>
@@ -263,8 +252,10 @@ export default class check_out extends Component {
               className="input_fields_c"
               placeholder="City..."
               onChange={(e) => {
-                this.state.city = e.target.value;
-                this.setState({});
+                this.setState({
+                  ...this.state,
+                  city : e.target.value
+                })
               }}
               value={this.state.city}
             ></input>
@@ -275,8 +266,10 @@ export default class check_out extends Component {
               className="input_fields_c"
               placeholder="State..."
               onChange={(e) => {
-                this.state.state = e.target.value;
-                this.setState({});
+                this.setState({
+                  ...this.state,
+                  state : e.target.value
+                })
               }}
               value={this.state.state}
             ></input>
@@ -287,8 +280,10 @@ export default class check_out extends Component {
               className="input_fields_c"
               placeholder="Zip Code..."
               onChange={(e) => {
-                this.state.zipCode = e.target.value;
-                this.setState({});
+                this.setState({
+                  ...this.state,
+                  zipCode : e.target.value
+                })
               }}
               value={this.state.zipCode}
             ></input>
@@ -298,8 +293,11 @@ export default class check_out extends Component {
             <select
               className="select_stars_c"
               onChange={(e) => {
-                this.state.payment_method = e.target.value;
-                this.setState({});
+               
+                this.setState({
+                  ...this.state,
+                  payment_method : e.target.value
+                })
               }}
               name={this.state.payment_method}
             >
@@ -331,8 +329,10 @@ export default class check_out extends Component {
               className="input_fields_c"
               placeholder="Full Name..."
               onChange={(e) => {
-                this.state.name = e.target.value;
-                this.setState({});
+                this.setState({
+                  ...this.state,
+                  name : e.target.value
+                })
               }}
               value={this.state.name}
             ></input>
@@ -343,8 +343,10 @@ export default class check_out extends Component {
               className="input_fields_c"
               placeholder="Email..."
               onChange={(e) => {
-                this.state.email = e.target.value;
-                this.setState({});
+                this.setState({
+                  ...this.state,
+                  email : e.target.value
+                })
               }}
               value={this.state.email}
             ></input>
@@ -355,8 +357,10 @@ export default class check_out extends Component {
               className="input_fields_c"
               placeholder="Number with country code..."
               onChange={(e) => {
-                this.state.phone = e.target.value;
-                this.setState({});
+                this.setState({
+                  ...this.state,
+                  phone : e.target.value
+                })
               }}
               value={this.state.phone}
               type="tel"
@@ -368,8 +372,10 @@ export default class check_out extends Component {
               className="input_fields_c"
               placeholder="Address..."
               onChange={(e) => {
-                this.state.address = e.target.value;
-                this.setState({});
+                this.setState({
+                  ...this.state,
+                  address : e.target.value
+                })
               }}
               value={this.state.address}
             ></input>
@@ -379,8 +385,10 @@ export default class check_out extends Component {
             <select
               className="select_stars_c"
               onChange={(e) => {
-                this.state.country = e.target.value;
-                this.setState({});
+                this.setState({
+                  ...this.state,
+                  country : e.target.value
+                })
               }}
               name={this.state.country}
             >
@@ -388,7 +396,7 @@ export default class check_out extends Component {
                 United Arab Emirates
               </option>
               <option defaultValue="India">India</option>
-              <option defaultValue="Pakistan">Pakistan</option>
+              {/* <option defaultValue="Pakistan">Pakistan</option> */}
             </select>{" "}
             <br /> <br />
             <label className="label_fields_c">City:</label>
@@ -397,8 +405,10 @@ export default class check_out extends Component {
               className="input_fields_c"
               placeholder="City..."
               onChange={(e) => {
-                this.state.city = e.target.value;
-                this.setState({});
+                this.setState({
+                  ...this.state,
+                  city : e.target.value
+                })
               }}
               value={this.state.city}
             ></input>
@@ -409,8 +419,10 @@ export default class check_out extends Component {
               className="input_fields_c"
               placeholder="State..."
               onChange={(e) => {
-                this.state.state = e.target.value;
-                this.setState({});
+                this.setState({
+                  ...this.state,
+                  state : e.target.value
+                })
               }}
               value={this.state.state}
             ></input>
@@ -421,8 +433,10 @@ export default class check_out extends Component {
               className="input_fields_c"
               placeholder="Zip Code..."
               onChange={(e) => {
-                this.state.zipCode = e.target.value;
-                this.setState({});
+                this.setState({
+                  ...this.state,
+                  zipCode : e.target.value
+                })
               }}
               value={this.state.zipCode}
             ></input>
@@ -432,8 +446,10 @@ export default class check_out extends Component {
             <select
               className="select_stars_c"
               onChange={(e) => {
-                this.state.payment_method = e.target.value;
-                this.setState({});
+                this.setState({
+                  ...this.state,
+                  payment_method : e.target.value
+                })
               }}
               name={this.state.payment_method}
             >
@@ -447,8 +463,10 @@ export default class check_out extends Component {
               className="input_fields_c"
               placeholder="Card Number..."
               onChange={(e) => {
-                this.state.ccNo = e.target.value;
-                this.setState({});
+                this.setState({
+                  ...this.state,
+                  ccNo : e.target.value
+                })
               }}
               value={this.state.ccNo}
             ></input>
@@ -458,8 +476,10 @@ export default class check_out extends Component {
             <select
               className="select_stars_c"
               onChange={(e) => {
-                this.state.expMonth = e.target.value;
-                this.setState({});
+                this.setState({
+                  ...this.state,
+                  expMonth : e.target.value
+                })
               }}
               name={this.state.expMonth}
             >
@@ -482,8 +502,10 @@ export default class check_out extends Component {
             <select
               className="select_stars_c"
               onChange={(e) => {
-                this.state.expYear = e.target.value;
-                this.setState({});
+                this.setState({
+                  ...this.state,
+                  expYear : e.target.value
+                })
               }}
               name={this.state.expYear}
             >
@@ -505,8 +527,10 @@ export default class check_out extends Component {
               className="input_fields_c"
               placeholder="Card Security Code..."
               onChange={(e) => {
-                this.state.cvv = e.target.value;
-                this.setState({});
+                this.setState({
+                  ...this.state,
+                  cvv : e.target.value
+                })
               }}
               value={this.state.cvv}
             ></input>

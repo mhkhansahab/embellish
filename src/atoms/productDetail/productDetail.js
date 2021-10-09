@@ -18,9 +18,11 @@ function productDetail({
       <div className="price">
         {currency === "AED"
           ? product.price_uae + " " + currency
-          : currency === "IND"
-          ? product.price_ind + " " + currency
-          : product.price_pkr + " " + currency}
+          : product.price_ind + " " + currency
+          // : currency === "IND"
+          // ? product.price_ind + " " + currency
+          // : product.price_pkr + " " + currency
+        }
       </div>
       <div className="sizes">
         <div className="box-title">Sizes</div>
@@ -78,11 +80,11 @@ function productDetail({
         <div className="box-title">Quantity</div>
         <div className="quantity-container pp-quantity">
           <div onClick={() => decQuantity()} className="pointer">
-            <i class="fas fa-minus"></i>
+            <i className="fas fa-minus"></i>
           </div>
           <div>{orderProduct.quantity}</div>
           <div onClick={() => incQuantity()} className="pointer">
-            <i class="fas fa-plus"></i>
+            <i className="fas fa-plus"></i>
           </div>
         </div>
       </div>
