@@ -20,23 +20,17 @@
   }
 
 .splash_logo{
-    width: 400px;
+    height: 200px;
     margin-left: auto;
     margin-right: auto;
-    
-    
 }
-
-
-
-
 
 
 
 @media screen and (max-width: 550px) {
 
     .splash_logo{
-        width: 200px;
+        height: 150px;
     }
 
 
@@ -59,8 +53,8 @@
     width: 10px;
     height: 10px;
     border-radius: 5px;
-    background-color: #000;
-    color: #000;
+    background-color: #0000009f;
+    color: #0000009f;
     animation: dotFlashing 1s infinite linear alternate;
     animation-delay: .5s;
   }
@@ -77,8 +71,8 @@
     width: 10px;
     height: 10px;
     border-radius: 5px;
-    background-color: #000;
-    color: #000;
+    background-color: #0000009f;
+    color: #0000009f;
     animation: dotFlashing 1s infinite alternate;
     animation-delay: 0s;
   }
@@ -88,15 +82,15 @@
     width: 10px;
     height: 10px;
     border-radius: 5px;
-    background-color: #000;
-    color: #000;
+    background-color: #0000009f;
+    color: #0000009f;
     animation: dotFlashing 1s infinite alternate;
     animation-delay: 1s;
   }
   
   @keyframes dotFlashing {
     0% {
-      background-color: #000;
+      background-color: #0000009f;
     }
     50%,
     100% {

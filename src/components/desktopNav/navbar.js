@@ -1,4 +1,4 @@
-import Logo from "./../../assets/logo-black.png";
+import Logo from "./../../assets/NavbarLogo.png";
 import NavLink from "./../../atoms/navlink/navlink";
 import "./navbar.css";
 import "./../../styles/media-queries/responsive-navbar.css";

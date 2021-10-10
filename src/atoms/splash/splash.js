@@ -1,6 +1,6 @@
 import React from 'react';
 import "./splash.css";
-import Logo from "./../../assets/logo-black.png";
+import Logo from "./../../assets/SplashLogo.png";
 
 
 

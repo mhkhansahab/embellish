@@ -19,7 +19,7 @@ export default class check_out extends Component {
       city: "",
       state: "",
       zipCode: "",
-      country: "",
+      country: "United Arab Emirates",
       token: "",
       ccNo: "",
       expMonth: "1",
@@ -306,7 +306,7 @@ export default class check_out extends Component {
                   United Arab Emirates
                 </option>
                 <option defaultValue="India">India</option>
-                <option defaultValue="Pakistan">Pakistan</option>
+                {/* <option defaultValue="Pakistan">Pakistan</option> */}
               </select>{" "}
               <br /> <br />
               <label className="label_fields_c">City:</label>
