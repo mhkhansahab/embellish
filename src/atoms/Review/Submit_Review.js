@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import Divider from "../divider/divider";
 import "./submit_review.css";
 import "../Checkout/check_out.css";
-import Splash  from "../../atoms/splash/splash"
-
+import Splash from "../../atoms/splash/splash";
+import Swal from "sweetalert2";
 
 class SubmitReview extends Component {
   constructor(props) {
@@ -21,10 +21,6 @@ class SubmitReview extends Component {
   }
 
   submit() {
-    // console.log(this.state.order_id);
-    // console.log(this.state.review_txt);
-    // console.log(this.state.stars);
-
     if (
       this.state.order_id !== "" &&
       this.state.review_txt !== "" &&
@@ -41,8 +37,8 @@ class SubmitReview extends Component {
       };
 
       this.setState({
-        load_status: true
-      })
+        load_status: true,
+      });
 
       fetch(
         "https://embellish.herokuapp.com/product/submit_review/",
@@ -50,70 +46,89 @@ class SubmitReview extends Component {
       )
         .then((response) => response.json())
         .then((result) => {
-
           this.setState({
-            load_status: false
-          })
+            load_status: false,
+          });
 
           let message = result.msg;
-
-          // console.log(message)
-
-          if (message == "success") {
-            alert("Thanks for submitting your valuable review.");
+          if (message === "success") {
+            Swal.fire({
+              icon: 'success',
+              title: 'Success',
+              text: "Thanks for submitting your valuable review.",
+              iconColor: "#000",
+              confirmButtonColor : "#000"
+            })
             window.location.href = "/";
           } else {
-            alert("Some error occurred. Try again.");
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: 'Something went wrong!',
+              iconColor: "#000",
+              confirmButtonColor : "#000"
+            })
           }
         })
         .catch((error) => {
-
           this.setState({
-            load_status: false
-          })
+            load_status: false,
+          });
 
-          alert("Some error occurred. Try again.");
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Something went wrong!',
+            iconColor: "#000",
+            confirmButtonColor : "#000"
+          })
         });
     } else {
-      alert("Submit All Information.");
+      Swal.fire({
+        icon: 'info',
+        title: 'Information Required!',
+        text: 'Enter All Information',
+        iconColor: "#000",
+        confirmButtonColor : "#000"
+      })
     }
   }
 
   render() {
-
-    if(this.state.load_status){
-
-      return(
-        <Splash/>
-      )
-
-    }else{
-
+    if (this.state.load_status) {
+      return <Splash />;
+    } else {
       return (
         <div>
           <Divider title="Submit Review"></Divider>
           <form className="review_form_c" style={{ textAlign: "left" }}>
             <label className="label_fields_c">Review:</label>
-            <br></br> 
+            <br></br>
             <div style={{ width: "100%", textAlign: "center" }}>
               <textarea
                 className="input_fields_c"
                 placeholder="Write your review..."
                 onChange={(e) => {
-                  this.state.review_txt = e.target.value;
+                  this.setState({
+                    ...this.state,
+                    review_txt: e.target.value,
+                  });
                 }}
               >
                 {this.state.review_txt}
               </textarea>
             </div>
-            <br></br> 
+            <br></br>
             <div>
-              <label className="label_fields_c">Star Rating:</label><br></br>
+              <label className="label_fields_c">Star Rating:</label>
+              <br></br>
               <select
                 className="select_stars_c"
                 onChange={(e) => {
-                  this.state.stars = parseInt(e.target.value);
-                  this.setState({});
+                  this.setState({
+                    ...this.state,
+                    stars: parseInt(e.target.value),
+                  });
                 }}
                 name={this.state.stars + " stars"}
               >
@@ -124,7 +139,7 @@ class SubmitReview extends Component {
                 <option defaultValue="1">1 stars</option>
               </select>
             </div>
-            <br></br> <br></br> 
+            <br></br> <br></br>
             <div style={{ width: "100%", textAlign: "center" }}>
               <button
                 type="button"
@@ -138,10 +153,7 @@ class SubmitReview extends Component {
           <br></br>
         </div>
       );
-
     }
-
-   
   }
 }
 

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./check_out.css";
 import Divider from "../divider/divider";
 import Splash from "../../atoms/splash/splash";
+import Swal from "sweetalert2";
 
 export default class check_out extends Component {
   constructor(props) {
@@ -100,12 +101,23 @@ export default class check_out extends Component {
 
             let message = result.Message;
             if (message !== "Error") {
-              alert(
-                "Order placed Successfully, you will receive a confirmation email soon."
-              );
+             
+              Swal.fire({
+                icon: 'success',
+                title: 'Success',
+                text: "Order placed Successfully, you will receive a confirmation email soon.",
+                iconColor: "#000",
+                confirmButtonColor : "#000"
+              })
               window.location.href = "/";
             } else {
-              alert("Some error occurred. Try again.");
+              Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Something went wrong!',
+                iconColor: "#000",
+                confirmButtonColor : "#000"
+              })
             }
           })
           .catch((error) => {
@@ -113,7 +125,13 @@ export default class check_out extends Component {
               load_status: false,
             });
 
-            alert("Some error occurred. Try again.");
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: 'Something went wrong!',
+              iconColor: "#000",
+              confirmButtonColor : "#000"
+            })
           });
       } else if (this.state.payment_method === "online") {
         if (
@@ -140,7 +158,6 @@ export default class check_out extends Component {
           });
 
           var successCallback = (data) => {
-            // console.log(data.response.token.token);
 
             this.setState({
               ...this.state,
@@ -184,12 +201,22 @@ export default class check_out extends Component {
                 console.log(message);
 
                 if (message !== "Error") {
-                  alert(
-                    "Order placed Successfully, you will receive a confirmation email soon."
-                  );
+                  Swal.fire({
+                    icon: 'success',
+                    title: 'Success',
+                    text: "Order placed Successfully, you will receive a confirmation email soon.",
+                    iconColor: "#000",
+                    confirmButtonColor : "#000"
+                  })
                   window.location.href = "/";
                 } else {
-                  alert("Some error occurred. Try again.");
+                  Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Something went wrong!',
+                    iconColor: "#000",
+                    confirmButtonColor : "#000"
+                  })
                 }
               })
               .catch((error) => {
@@ -198,7 +225,13 @@ export default class check_out extends Component {
                 });
 
                 console.log(error.message);
-                alert("Some error occurred. Try again.");
+                Swal.fire({
+                  icon: 'error',
+                  title: 'Oops...',
+                  text: 'Something went wrong!',
+                  iconColor: "#000",
+                  confirmButtonColor : "#000"
+                })
               });
           };
 
@@ -207,14 +240,32 @@ export default class check_out extends Component {
               load_status: false,
             });
 
-            alert("Some error occurred. Try again.");
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: 'Something went wrong!',
+              iconColor: "#000",
+              confirmButtonColor : "#000"
+            })
           };
         } else {
-          alert("Enter All Information");
+          Swal.fire({
+            icon: 'info',
+            title: 'Information Required!',
+            text: 'Enter All Information',
+            iconColor: "#000",
+            confirmButtonColor : "#000"
+          })
         }
       }
     } else {
-      alert("Enter All Information");
+      Swal.fire({
+        icon: 'info',
+        title: 'Information Required!',
+        text: 'Enter All Information',
+        iconColor: "#000",
+        confirmButtonColor : "#000"
+      })
     }
   }
 

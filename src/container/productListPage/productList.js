@@ -2,16 +2,17 @@ import React, { useEffect } from "react";
 import "./productList.css";
 import ProductCard from "./../../atoms/productCard/productCard";
 import Divider from "./../../atoms/divider/divider";
-import { withRouter} from "react-router";
+import { withRouter } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import { getCategoryProducts } from "../../store/services/products";
-import Splash  from "../../atoms/splash/splash"
-
+import Splash from "../../atoms/splash/splash";
 
 function ProductList({ location }) {
   const dispatch = useDispatch();
   const categories = useSelector((state) => state.categoryReducer.categories);
-  const categoryProducts = useSelector((state) => state.productReducer.categoryProducts);
+  const categoryProducts = useSelector(
+    (state) => state.productReducer.categoryProducts
+  );
   let index = 0;
 
   const getPageName = () => {
@@ -20,7 +21,7 @@ function ProductList({ location }) {
       .map((category) => {
         if (category.value === searchParam) {
           return category.name;
-        }else if(searchParam === "all_products"){
+        } else if (searchParam === "all_products") {
           return searchParam;
         }
       })
@@ -29,7 +30,7 @@ function ProductList({ location }) {
   };
 
   const pageName = getPageName();
-  if(!pageName.length>0){
+  if (!pageName.length > 0) {
     index++;
   }
 
@@ -37,20 +38,16 @@ function ProductList({ location }) {
     dispatch(getCategoryProducts(pageName[0]));
   }, [index, location]);
 
-
-
-  if(categories.length===0){
-    return(
-      <Splash/>
-    )
-  }else{
-
+  if (categories.length === 0) {
+    return <Splash />;
+  } else {
     return (
       <div className="product-list-page-container">
         <Divider title={pageName[0].replace("_", " ")}></Divider>
         <div className="product-cards">
-          {categoryProducts ? categoryProducts.products.length > 0 
-            ? categoryProducts.products.map((product) => {
+          {categoryProducts ? (
+            categoryProducts.products.length > 0 ? (
+              categoryProducts.products.map((product) => {
                 return (
                   <ProductCard
                     product={product}
@@ -58,9 +55,12 @@ function ProductList({ location }) {
                   ></ProductCard>
                 );
               })
-            : <div>No Product Available</div>
-          : <div>No Product Available</div>
-          }
+            ) : (
+              <div>No Product Available</div>
+            )
+          ) : (
+            <div>No Product Available</div>
+          )}
         </div>
         <br></br>
         <br></br>
@@ -70,11 +70,7 @@ function ProductList({ location }) {
         </div> */}
       </div>
     );
-
   }
-
-
-  
 }
 
 export default withRouter(ProductList);
