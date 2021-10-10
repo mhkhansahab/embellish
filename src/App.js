@@ -88,7 +88,7 @@ function App() {
         >
           <option value="AED">UAE</option>
           <option value="IND">IND</option>
-          <option value="PKR">PAK</option>
+          {/* <option value="PKR">PAK</option> */}
         </select>
 
         {modal.status ? (
