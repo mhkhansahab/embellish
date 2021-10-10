@@ -3,6 +3,7 @@ import "./../../styles/media-queries/responsive-footer.css";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { setNewsletterSubscription } from "../../store/services/newsletter";
+import Swal from "sweetalert2";
 
 const Footer = () => {
   const [email, setEmail] = useState({
@@ -27,16 +28,40 @@ const Footer = () => {
       if(validateEmail(email.email)){
         const result = await dispatch(setNewsletterSubscription(email.email));
         if(result.msg === "success"){
-          alert("Congrats you have subscribed");
+          Swal.fire({
+            icon: 'success',
+            title: "Congrats...",
+            text: 'Congrats you have subscribed',
+            iconColor: "#000",
+            confirmButtonColor : "#000"
+          })
           setEmail({email : ""})
         }else{
-          alert("Oops you can't subscribed our services right now");
+          Swal.fire({
+            icon: 'error',
+            title: "Oops...",
+            text: "Oops you can't subscribed our services right now",
+            iconColor: "#000",
+            confirmButtonColor : "#000"
+          })
         }
       }else{
-        alert("Invalid Email");
+        Swal.fire({
+          icon: 'warning',
+          title: "Invalid Email",
+          text: 'Enter Correct Email',
+          iconColor: "#000",
+          confirmButtonColor : "#000"
+        })
       }
     }else{
-      alert("Enter Email");
+      Swal.fire({
+        icon: 'info',
+        title: "Invalid Email",
+        text: "Enter Email",
+        iconColor: "#000",
+        confirmButtonColor : "#000"
+      })
     }
   };
 

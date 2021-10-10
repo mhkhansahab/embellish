@@ -108,8 +108,12 @@ export default class check_out extends Component {
                 text: "Order placed Successfully, you will receive a confirmation email soon.",
                 iconColor: "#000",
                 confirmButtonColor : "#000"
+              }).then((result)=>{
+                if(result.isConfirmed){
+                  window.location.href = "/";
+                }
               })
-              window.location.href = "/";
+              
             } else {
               Swal.fire({
                 icon: 'error',
@@ -206,9 +210,13 @@ export default class check_out extends Component {
                     title: 'Success',
                     text: "Order placed Successfully, you will receive a confirmation email soon.",
                     iconColor: "#000",
-                    confirmButtonColor : "#000"
+                    confirmButtonColor : "#000",
+                    showCancelButton: true,
+                  }).then((result) => {
+                    if (result.isConfirmed){
+                      window.location.href = "/";
+                    }
                   })
-                  window.location.href = "/";
                 } else {
                   Swal.fire({
                     icon: 'error',
