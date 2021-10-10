@@ -36,20 +36,25 @@ function ProductPage({ location }) {
     price_ind: "",
   });
 
-  useEffect(() => {
-    window.scrollTo({
-      top: 0,
-      left: 0,
-      behavior: "smooth",
-    });
-    dispatch(getProductDetails(searchParam)).then((data) => {
-      dispatch(getCategoryProducts(data.category));
-    });
-    if (product) {
-      setOrderProduct({
-        ...orderProduct,
+  useEffect(() =>{
+    (async()=>{
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: "smooth",
       });
-    }
+      const data = await dispatch(getProductDetails(searchParam))
+      await dispatch(getCategoryProducts(data.category));
+      if (product) {
+        setOrderProduct({
+          ...orderProduct,
+          price_ind : product.price_pkr,
+          price_uae : product.price_uae,
+          price_pkr : product.price_pkr
+        });
+      }
+    })()
+    
   }, [location, currency]);
 
   const incQuantity = () => {
@@ -68,25 +73,27 @@ function ProductPage({ location }) {
   };
 
   const colorSelector = (color) => {
-    const price = currency === "AED" ? product.price_uae : product.price_ind;
     setOrderProduct({
       ...orderProduct,
       color: color,
       name: product.name,
       id: product._id,
       image: product.image,
-      price: price,
+      price_ind : product.price_pkr,
+      price_uae : product.price_uae,
+      price_pkr : product.price_pkr
     });
   };
   const sizeSelector = (size) => {
-    const price = currency === "AED" ? product.price_uae : product.price_ind;
     setOrderProduct({
       ...orderProduct,
       size: size,
       name: product.name,
       id: product._id,
       image: product.image,
-      price: price,
+      price_ind : product.price_pkr,
+      price_uae : product.price_uae,
+      price_pkr : product.price_pkr
     });
   };
 
@@ -114,26 +121,34 @@ function ProductPage({ location }) {
         if (flag) {
           window.localStorage.setItem("order", JSON.stringify(arr));
         } else {
-          orderProduct.price_pkr = product.price_pkr;
-          orderProduct.price_uae = product.price_uae;
-          orderProduct.price_ind = product.price_ind;
-
-          arr = arr.concat(orderProduct);
+          const tempProduct = {
+            ...orderProduct,
+            price_pkr : product.price_pkr,
+            price_uae : product.price_uae,
+            price_ind : product.price_ind
+          }
+          arr = arr.concat(tempProduct);
           window.localStorage.setItem("order", JSON.stringify(arr));
         }
       } else {
         const arr = [];
-        arr.push(orderProduct);
+        const tempProduct = {
+          ...orderProduct
+        }
+        console.log(tempProduct);
+        arr.push(tempProduct);
         window.localStorage.setItem("order", JSON.stringify(arr));
       }
       setOrderProduct({
         id: "",
         name: "",
-        price: "",
         quantity: 1,
         size: "",
         color: "",
         image: "",
+        price_pkr: "",
+        price_uae: "",
+        price_ind: "",
       });
       Swal.fire({
         icon: 'success',
