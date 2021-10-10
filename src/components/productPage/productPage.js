@@ -12,8 +12,8 @@ import {
   getProductDetails,
 } from "../../store/services/products";
 import { Link } from "react-router-dom";
-import Splash  from "../../atoms/splash/splash"
-
+import Splash from "../../atoms/splash/splash";
+import Swal from "sweetalert2";
 
 function ProductPage({ location }) {
   const dispatch = useDispatch();
@@ -30,7 +30,7 @@ function ProductPage({ location }) {
     quantity: 1,
     size: "",
     color: "",
-    image : "",
+    image: "",
     price_pkr: "",
     price_uae: "",
     price_ind: "",
@@ -48,7 +48,6 @@ function ProductPage({ location }) {
     if (product) {
       setOrderProduct({
         ...orderProduct,
-        
       });
     }
   }, [location, currency]);
@@ -69,35 +68,25 @@ function ProductPage({ location }) {
   };
 
   const colorSelector = (color) => {
-    const price =
-      currency === "AED"
-        ? product.price_uae
-        : currency === "IND"
-        ? product.price_ind
-        : product.price_pkr;
-
+    const price = currency === "AED" ? product.price_uae : product.price_ind;
     setOrderProduct({
       ...orderProduct,
       color: color,
       name: product.name,
       id: product._id,
-      image : product.image
+      image: product.image,
+      price: price,
     });
   };
   const sizeSelector = (size) => {
-    const price =
-      currency === "AED"
-        ? product.price_uae
-        : currency === "IND"
-        ? product.price_ind
-        : product.price_pkr;
-
+    const price = currency === "AED" ? product.price_uae : product.price_ind;
     setOrderProduct({
       ...orderProduct,
       size: size,
       name: product.name,
       id: product._id,
-      image: product.image
+      image: product.image,
+      price: price,
     });
   };
 
@@ -109,27 +98,30 @@ function ProductPage({ location }) {
       orderProduct.color !== ""
     ) {
       const order = window.localStorage.getItem("order");
-      if(order){
+      if (order) {
         let arr = JSON.parse(order);
         let flag = false;
-        arr.forEach(element => {
-          if(element.id === orderProduct.id && element.size === orderProduct.size && element.color === orderProduct.color){
+        arr.forEach((element) => {
+          if (
+            element.id === orderProduct.id &&
+            element.size === orderProduct.size &&
+            element.color === orderProduct.color
+          ) {
             element.quantity += orderProduct.quantity;
             flag = true;
           }
         });
-        if(flag){
+        if (flag) {
           window.localStorage.setItem("order", JSON.stringify(arr));
-        }else{
-          
-          orderProduct.price_pkr= product.price_pkr;
-          orderProduct.price_uae= product.price_uae;
-          orderProduct.price_ind= product.price_ind;
-        
+        } else {
+          orderProduct.price_pkr = product.price_pkr;
+          orderProduct.price_uae = product.price_uae;
+          orderProduct.price_ind = product.price_ind;
+
           arr = arr.concat(orderProduct);
           window.localStorage.setItem("order", JSON.stringify(arr));
         }
-      }else{
+      } else {
         const arr = [];
         arr.push(orderProduct);
         window.localStorage.setItem("order", JSON.stringify(arr));
@@ -141,20 +133,29 @@ function ProductPage({ location }) {
         quantity: 1,
         size: "",
         color: "",
-        image : ""
+        image: "",
+      });
+      Swal.fire({
+        icon: 'success',
+        title: 'Success',
+        text: "Product Added To Cart.",
+        iconColor: "#000",
+        confirmButtonColor : "#000"
       })
-      alert("Product Added To Cart");
-    } else{
-      alert("Please select size, color and quantity.")
+    } else {
+      Swal.fire({
+        icon: 'info',
+        title: 'Information Required!',
+        text: 'Please Select Size, Color and Quantity.',
+        iconColor: "#000",
+        confirmButtonColor : "#000"
+      })
     }
   };
 
-  if(product===null){
-    return(
-      <Splash/>
-    )
-  }else{
-
+  if (product === null) {
+    return <Splash />;
+  } else {
     return (
       <>
         <div className="product-page-container flex">
@@ -186,34 +187,23 @@ function ProductPage({ location }) {
             <div className="product-description">{product.description}</div>
           ) : null}
         </div>
-  
+
         <Divider title="Reviews"></Divider>
         <div className="review-card-container flex">
-
-
-
-            {
-              product.reviews !== null ? (
-                
-                product.reviews.map((review,index)=>{
-
-                  return(
-  
-                    <ReviewCard details={JSON.parse(review)} key={index}></ReviewCard>
-  
-                  );
-  
-                }) 
-              ): (
-                <h3>No Reviews</h3>
-              )
-
-            }
-
-          
-          
+          {product.reviews !== null ? (
+            product.reviews.map((review, index) => {
+              return (
+                <ReviewCard
+                  details={JSON.parse(review)}
+                  key={index}
+                ></ReviewCard>
+              );
+            })
+          ) : (
+            <h3>No Reviews</h3>
+          )}
         </div>
-  
+
         <Divider title="Similar Products"></Divider>
         <div className="products-card-container">
           <div className="product-cards">
@@ -241,11 +231,7 @@ function ProductPage({ location }) {
         </div>
       </>
     );
-  
   }
-
-
- 
 }
 
 export default withRouter(ProductPage);

@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import "./check_out.css";
 import Divider from "../divider/divider";
-import Splash  from "../../atoms/splash/splash"
-
+import Splash from "../../atoms/splash/splash";
+import Swal from "sweetalert2";
 
 export default class check_out extends Component {
   constructor(props) {
@@ -80,16 +80,14 @@ export default class check_out extends Component {
             address: this.state.address,
             phone: this.state.phone,
             currency: this.state.currency,
-            country:this.state.country,
+            country: this.state.country,
             payment_method: this.state.payment_method,
           }),
         };
 
-
         this.setState({
-          load_status: true
+          load_status: true,
         });
-
 
         fetch(
           "https://embellish.herokuapp.com/product/place_order/",
@@ -97,30 +95,44 @@ export default class check_out extends Component {
         )
           .then((response) => response.json())
           .then((result) => {
-
             this.setState({
-              load_status: false
+              load_status: false,
             });
 
             let message = result.Message;
             if (message !== "Error") {
-              alert(
-                "Order placed Successfully, you will receive a confirmation email soon."
-              );
-                window.location.href = "/";
+             
+              Swal.fire({
+                icon: 'success',
+                title: 'Success',
+                text: "Order placed Successfully, you will receive a confirmation email soon.",
+                iconColor: "#000",
+                confirmButtonColor : "#000"
+              })
+              window.location.href = "/";
             } else {
-              alert("Some error occurred. Try again.");
+              Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Something went wrong!',
+                iconColor: "#000",
+                confirmButtonColor : "#000"
+              })
             }
           })
           .catch((error) => {
-          
             this.setState({
-              load_status: false
+              load_status: false,
             });
 
-            alert("Some error occurred. Try again.");
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: 'Something went wrong!',
+              iconColor: "#000",
+              confirmButtonColor : "#000"
+            })
           });
-
       } else if (this.state.payment_method === "online") {
         if (
           this.state.ccNo !== null &&
@@ -138,18 +150,20 @@ export default class check_out extends Component {
           };
 
           window.TCO.loadPubKey("production", function () {
-
             this.setState({
-              load_status: true
+              load_status: true,
             });
 
             window.TCO.requestToken(successCallback, errorCallback, args);
           });
 
           var successCallback = (data) => {
-            // console.log(data.response.token.token);
 
-            this.state.token = data.response.token.token;
+            this.setState({
+              ...this.state,
+              token: data.response.token.token,
+            });
+
             const requestOptions = {
               method: "POST",
               headers: { "Content-Type": "application/json" },
@@ -170,9 +184,8 @@ export default class check_out extends Component {
             };
 
             this.setState({
-              load_status: true
+              load_status: true,
             });
-
 
             fetch(
               "https://embellish.herokuapp.com/product/place_order/",
@@ -180,64 +193,86 @@ export default class check_out extends Component {
             )
               .then((response) => response.json())
               .then((result) => {
-
                 this.setState({
-                  load_status: false
+                  load_status: false,
                 });
-                
+
                 let message = result.Message;
                 console.log(message);
 
                 if (message !== "Error") {
-                  alert(
-                    "Order placed Successfully, you will receive a confirmation email soon."
-                  );
-                  window.location.href='/';
+                  Swal.fire({
+                    icon: 'success',
+                    title: 'Success',
+                    text: "Order placed Successfully, you will receive a confirmation email soon.",
+                    iconColor: "#000",
+                    confirmButtonColor : "#000"
+                  })
+                  window.location.href = "/";
                 } else {
-                  alert("Some error occurred. Try again.");
+                  Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Something went wrong!',
+                    iconColor: "#000",
+                    confirmButtonColor : "#000"
+                  })
                 }
               })
               .catch((error) => {
-
                 this.setState({
-                  load_status: false
+                  load_status: false,
                 });
 
                 console.log(error.message);
-                alert("Some error occurred. Try again.");
+                Swal.fire({
+                  icon: 'error',
+                  title: 'Oops...',
+                  text: 'Something went wrong!',
+                  iconColor: "#000",
+                  confirmButtonColor : "#000"
+                })
               });
           };
 
           var errorCallback = (data) => {
-
             this.setState({
-              load_status: false
+              load_status: false,
             });
 
-            alert("Some error occurred. Try again.");
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: 'Something went wrong!',
+              iconColor: "#000",
+              confirmButtonColor : "#000"
+            })
           };
         } else {
-          alert("Enter All Information");
+          Swal.fire({
+            icon: 'info',
+            title: 'Information Required!',
+            text: 'Enter All Information',
+            iconColor: "#000",
+            confirmButtonColor : "#000"
+          })
         }
       }
     } else {
-      alert("Enter All Information");
+      Swal.fire({
+        icon: 'info',
+        title: 'Information Required!',
+        text: 'Enter All Information',
+        iconColor: "#000",
+        confirmButtonColor : "#000"
+      })
     }
   }
 
   render() {
-
-    if(this.state.load_status){
-
-      return(
-
-        <Splash/>
-
-      )
-      
-
-    }else{
-
+    if (this.state.load_status) {
+      return <Splash />;
+    } else {
       if (this.state.payment_method === "cod") {
         return (
           <div>
@@ -249,8 +284,10 @@ export default class check_out extends Component {
                 className="input_fields_c"
                 placeholder="Full Name..."
                 onChange={(e) => {
-                  this.state.name = e.target.value;
-                  this.setState({});
+                  this.setState({
+                    ...this.state,
+                    name: e.target.value,
+                  });
                 }}
                 value={this.state.name}
               ></input>
@@ -261,8 +298,10 @@ export default class check_out extends Component {
                 className="input_fields_c"
                 placeholder="Email..."
                 onChange={(e) => {
-                  this.state.email = e.target.value;
-                  this.setState({});
+                  this.setState({
+                    ...this.state,
+                    email: e.target.value,
+                  });
                 }}
                 value={this.state.email}
               ></input>
@@ -273,8 +312,10 @@ export default class check_out extends Component {
                 className="input_fields_c"
                 placeholder="Number with country code..."
                 onChange={(e) => {
-                  this.state.phone = e.target.value;
-                  this.setState({});
+                  this.setState({
+                    ...this.state,
+                    phone: e.target.value,
+                  });
                 }}
                 value={this.state.phone}
                 type="tel"
@@ -286,8 +327,10 @@ export default class check_out extends Component {
                 className="input_fields_c"
                 placeholder="Address..."
                 onChange={(e) => {
-                  this.state.address = e.target.value;
-                  this.setState({});
+                  this.setState({
+                    ...this.state,
+                    address: e.target.value,
+                  });
                 }}
                 value={this.state.address}
               ></input>
@@ -297,8 +340,10 @@ export default class check_out extends Component {
               <select
                 className="select_stars_c"
                 onChange={(e) => {
-                  this.state.country = e.target.value;
-                  this.setState({});
+                  this.setState({
+                    ...this.state,
+                    country: e.target.value,
+                  });
                 }}
                 name={this.state.country}
               >
@@ -315,8 +360,10 @@ export default class check_out extends Component {
                 className="input_fields_c"
                 placeholder="City..."
                 onChange={(e) => {
-                  this.state.city = e.target.value;
-                  this.setState({});
+                  this.setState({
+                    ...this.state,
+                    city: e.target.value,
+                  });
                 }}
                 value={this.state.city}
               ></input>
@@ -327,8 +374,10 @@ export default class check_out extends Component {
                 className="input_fields_c"
                 placeholder="State..."
                 onChange={(e) => {
-                  this.state.state = e.target.value;
-                  this.setState({});
+                  this.setState({
+                    ...this.state,
+                    state: e.target.value,
+                  });
                 }}
                 value={this.state.state}
               ></input>
@@ -339,8 +388,10 @@ export default class check_out extends Component {
                 className="input_fields_c"
                 placeholder="Zip Code..."
                 onChange={(e) => {
-                  this.state.zipCode = e.target.value;
-                  this.setState({});
+                  this.setState({
+                    ...this.state,
+                    zipCode: e.target.value,
+                  });
                 }}
                 value={this.state.zipCode}
               ></input>
@@ -350,8 +401,10 @@ export default class check_out extends Component {
               <select
                 className="select_stars_c"
                 onChange={(e) => {
-                  this.state.payment_method = e.target.value;
-                  this.setState({});
+                  this.setState({
+                    ...this.state,
+                    payment_method: e.target.value,
+                  });
                 }}
                 name={this.state.payment_method}
               >
@@ -370,13 +423,14 @@ export default class check_out extends Component {
                 </button>
               </div>
             </form>
-            <br></br><br></br>
-            </div>
+            <br></br>
+            <br></br>
+          </div>
         );
       } else {
         return (
           <div>
-          <Divider title="Check Out"></Divider>
+            <Divider title="Check Out"></Divider>
             <form className="review_form_c" style={{ textAlign: "left" }}>
               <label className="label_fields_c">Full Name:</label>
               <br></br>
@@ -384,8 +438,10 @@ export default class check_out extends Component {
                 className="input_fields_c"
                 placeholder="Full Name..."
                 onChange={(e) => {
-                  this.state.name = e.target.value;
-                  this.setState({});
+                  this.setState({
+                    ...this.state,
+                    name: e.target.value,
+                  });
                 }}
                 value={this.state.name}
               ></input>
@@ -396,8 +452,10 @@ export default class check_out extends Component {
                 className="input_fields_c"
                 placeholder="Email..."
                 onChange={(e) => {
-                  this.state.email = e.target.value;
-                  this.setState({});
+                  this.setState({
+                    ...this.state,
+                    email: e.target.value,
+                  });
                 }}
                 value={this.state.email}
               ></input>
@@ -408,8 +466,10 @@ export default class check_out extends Component {
                 className="input_fields_c"
                 placeholder="Number with country code..."
                 onChange={(e) => {
-                  this.state.phone = e.target.value;
-                  this.setState({});
+                  this.setState({
+                    ...this.state,
+                    phone: e.target.value,
+                  });
                 }}
                 value={this.state.phone}
                 type="tel"
@@ -421,8 +481,10 @@ export default class check_out extends Component {
                 className="input_fields_c"
                 placeholder="Address..."
                 onChange={(e) => {
-                  this.state.address = e.target.value;
-                  this.setState({});
+                  this.setState({
+                    ...this.state,
+                    address : e.target.value
+                  })
                 }}
                 value={this.state.address}
               ></input>
@@ -432,8 +494,10 @@ export default class check_out extends Component {
               <select
                 className="select_stars_c"
                 onChange={(e) => {
-                  this.state.country = e.target.value;
-                  this.setState({});
+                  this.setState({
+                    ...this.state,
+                    country : e.target.value
+                  })
                 }}
                 name={this.state.country}
               >
@@ -441,7 +505,7 @@ export default class check_out extends Component {
                   United Arab Emirates
                 </option>
                 <option defaultValue="India">India</option>
-                <option defaultValue="Pakistan">Pakistan</option>
+                {/* <option defaultValue="Pakistan">Pakistan</option> */}
               </select>{" "}
               <br /> <br />
               <label className="label_fields_c">City:</label>
@@ -450,8 +514,10 @@ export default class check_out extends Component {
                 className="input_fields_c"
                 placeholder="City..."
                 onChange={(e) => {
-                  this.state.city = e.target.value;
-                  this.setState({});
+                  this.setState({
+                    ...this.state,
+                  city : e.target.value
+                  })
                 }}
                 value={this.state.city}
               ></input>
@@ -462,8 +528,10 @@ export default class check_out extends Component {
                 className="input_fields_c"
                 placeholder="State..."
                 onChange={(e) => {
-                  this.state.state = e.target.value;
-                  this.setState({});
+                  this.setState({
+                    ...this.state,
+                    state : e.target.value
+                  })
                 }}
                 value={this.state.state}
               ></input>
@@ -474,8 +542,10 @@ export default class check_out extends Component {
                 className="input_fields_c"
                 placeholder="Zip Code..."
                 onChange={(e) => {
-                  this.state.zipCode = e.target.value;
-                  this.setState({});
+                  this.setState({
+                    ...this.state,
+                    zipCode : e.target.value
+                  })
                 }}
                 value={this.state.zipCode}
               ></input>
@@ -485,8 +555,10 @@ export default class check_out extends Component {
               <select
                 className="select_stars_c"
                 onChange={(e) => {
-                  this.state.payment_method = e.target.value;
-                  this.setState({});
+                  this.setState({
+                    ...this.state,
+                    payment_method : e.target.value
+                  })
                 }}
                 name={this.state.payment_method}
               >
@@ -500,8 +572,10 @@ export default class check_out extends Component {
                 className="input_fields_c"
                 placeholder="Card Number..."
                 onChange={(e) => {
-                  this.state.ccNo = e.target.value;
-                  this.setState({});
+                  this.setState({
+                    ...this.state,
+                    ccNo : e.target.value
+                  })
                 }}
                 value={this.state.ccNo}
               ></input>
@@ -511,8 +585,10 @@ export default class check_out extends Component {
               <select
                 className="select_stars_c"
                 onChange={(e) => {
-                  this.state.expMonth = e.target.value;
-                  this.setState({});
+                  this.setState({
+                    ...this.state,
+                    expMonth : e.target.value
+                  })
                 }}
                 name={this.state.expMonth}
               >
@@ -535,8 +611,10 @@ export default class check_out extends Component {
               <select
                 className="select_stars_c"
                 onChange={(e) => {
-                  this.state.expYear = e.target.value;
-                  this.setState({});
+                  this.setState({
+                    ...this.state,
+                    expYear : e.target.value
+                  })
                 }}
                 name={this.state.expYear}
               >
@@ -558,8 +636,10 @@ export default class check_out extends Component {
                 className="input_fields_c"
                 placeholder="Card Security Code..."
                 onChange={(e) => {
-                  this.state.cvv = e.target.value;
-                  this.setState({});
+                  this.setState({
+                    ...this.state,
+                    cvv : e.target.value
+                  })
                 }}
                 value={this.state.cvv}
               ></input>
@@ -575,14 +655,11 @@ export default class check_out extends Component {
                 </button>
               </div>
             </form>
-           <br></br><br></br>
-            </div>
+            <br></br>
+            <br></br>
+          </div>
         );
       }
-
     }
-
-
-    
   }
 }

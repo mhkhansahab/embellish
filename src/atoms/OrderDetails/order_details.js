@@ -2,8 +2,6 @@ import "./../cartPageTile/cartPageTile.css";
 import CartPageTile from "./../cartPageTile/cartPageTileNoEdit";
 import Divider from "./../divider/divider";
 import React, { Component } from "react";
-import Splash  from "../../atoms/splash/splash"
-
 
 class OrderDetails extends Component {
   constructor(props) {
@@ -33,12 +31,12 @@ class OrderDetails extends Component {
       .then((response) => response.json())
       .then((result) => {
         if (result.order.items) {
-          this.state.items = JSON.parse(result.order.items);
-          this.state.currency = result.order.currency;
-          this.state.total = result.order.total;
-
-          console.log(result.order)
-          this.setState({});
+          this.setState({
+            ...this.state,
+            items: JSON.parse(result.order.items),
+            currency: result.order.currency,
+            total: result.order.total,
+          });
         }
       })
       .catch((error) => {});
@@ -46,7 +44,6 @@ class OrderDetails extends Component {
 
   get_tiles() {
     return this.state.items.map((item, index) => {
-      
       return (
         <CartPageTile
           key={index}
@@ -65,7 +62,6 @@ class OrderDetails extends Component {
   }
 
   render() {
-
     if (this.state.items.length === 0) {
       return (
         <div className="cart-page-container">
@@ -81,9 +77,9 @@ class OrderDetails extends Component {
 
           {this.get_tiles()}
 
-          <Divider title={"Total : "+this.state.total+" "+this.state.currency}></Divider>
-
-
+          <Divider
+            title={"Total : " + this.state.total + " " + this.state.currency}
+          ></Divider>
         </div>
       );
     }

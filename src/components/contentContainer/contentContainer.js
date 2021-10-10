@@ -5,27 +5,20 @@ import ProductCard from "./../../atoms/productCard/productCard";
 import "./content.css";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import Splash  from "../../atoms/splash/splash"
+import Splash from "../../atoms/splash/splash";
 
 function ContentContainer() {
   const products = useSelector((state) => state.productReducer.latestArrivals);
   const categories = useSelector((state) => state.categoryReducer.categories);
   const banners = useSelector((state) => state.bannerReducer.banners);
 
-
-  if(banners.length===0){
-    return(
-      <Splash/>
-    )
-  }else{
-  
+  if (banners.length === 0) {
+    return <Splash />;
+  } else {
     return (
       <div>
-  
-        
-  
         <Carousel banners={banners} type="home"></Carousel>
-  
+
         <Divider title="Categories"></Divider>
         <div className="product-cards">
           {!categories || categories.length <= 1 ? (
@@ -43,7 +36,7 @@ function ContentContainer() {
             })
           )}
         </div>
-  
+
         <Divider title="New Arrival"></Divider>
         <div className="product-cards">
           {!products || products.length <= 0 ? (
@@ -66,11 +59,7 @@ function ContentContainer() {
         </Link>
       </div>
     );
-  
   }
-
-
-  
 }
 
 export default ContentContainer;
